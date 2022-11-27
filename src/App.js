@@ -25,7 +25,6 @@ function App() {
       <Route path="/Hero" element={<Hero />}/>
       <Route path="/Carousel" element={<Carousel />}/>
       <Route path="/BookingForm" element={<BookingForm />}/>
-
       </Routes>
     </BrowserRouter>
    

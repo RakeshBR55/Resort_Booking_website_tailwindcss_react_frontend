@@ -9,10 +9,8 @@ const Home = () => {
     <div>
       <Navbar />
       <Carousel />
-      <BookingForm />
+      <BookingForm/>
       <Hero />
-      
-
     </div>
   )
 }
