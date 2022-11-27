@@ -11,8 +11,10 @@ const Login = () => {
   async function loginUser(event){
     event.preventDefault();
     console.log(email,password);
+
     const response = await fetch('http://localhost:8800/api/user/login', {
 			method: 'POST',
+            credentials: 'include',
 			headers: {
 				'Content-Type': 'application/json',
 			},
@@ -21,13 +23,11 @@ const Login = () => {
 				password,
 			}),
 		})
-
 		const data = await response.json()
-
-		if (data.user) {
-			console.log(cookie);
+        
+		if (data.status === 'ok') {
 			alert('Login successful')
-			window.location.href = '/dashboard'
+			navigate('/')
 		} else {
 			alert('Please check your username and password')
 		}
