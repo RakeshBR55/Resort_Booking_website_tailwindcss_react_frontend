@@ -4,15 +4,12 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination, Navigation, Autoplay } from "swiper";
+import homestay from "../../assets/homestay.jpeg"
+import yana from "../../assets/yanahorizontal.jpeg"
+import riverRafting from "../../assets/riverRafting.jpeg"
 
 const Carousel = () => {
-  return (
-    
-    
-    
-    
-    
-    
+  return (  
     <>
     
     <Swiper
@@ -33,22 +30,22 @@ const Carousel = () => {
         <SwiperSlide>
             <img
                 className="object-fill w-full h-screen"
-                src="https://cdn.pixabay.com/photo/2022/03/20/15/40/nature-7081138__340.jpg"
-                alt="image slide 1"
+                src={homestay}
+                alt=" slide 1"
             />
         </SwiperSlide>
         <SwiperSlide>
             <img
                 className="object-fill w-full h-screen"
-                src="https://cdn.pixabay.com/photo/2022/07/24/17/55/wind-energy-7342177__340.jpg"
-                alt="image slide 2"
+                src={yana}
+                alt="slide 2"
             />
         </SwiperSlide>
         <SwiperSlide>
             <img
                 className="object-fill w-full h-screen"
-                src="https://cdn.pixabay.com/photo/2022/07/26/03/35/jogger-7344979__340.jpg"
-                alt="image slide 3"
+                src={riverRafting}
+                alt="slide 3"
             />
         </SwiperSlide>
     </Swiper>

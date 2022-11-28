@@ -13,6 +13,9 @@ import Navbar from './components/navbar/Navbar';
 import Hero from './components/hero/Hero.jsx'
 import Carousel from './components/carousel/Carousel.jsx'
 import BookingForm from './components/bookingForm/BookingForm';
+import Attractiion from './components/attraction/Attractiion';
+import Rooms from './pages/roomSelection/Rooms';
+
 
 function App() {
   return (
@@ -25,6 +28,12 @@ function App() {
       <Route path="/Hero" element={<Hero />}/>
       <Route path="/Carousel" element={<Carousel />}/>
       <Route path="/BookingForm" element={<BookingForm />}/>
+      <Route path="/Attraction" element={<Attractiion />}/>
+      <Route path="/Rooms" element={<Rooms />}/>
+      
+      
+
+      
 
       </Routes>
     </BrowserRouter>
