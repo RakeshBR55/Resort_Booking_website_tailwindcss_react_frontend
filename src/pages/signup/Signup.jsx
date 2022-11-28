@@ -1,15 +1,38 @@
 import React from 'react'
 import {Link} from "react-router-dom"
 import { useState,useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 const Signup = () => {
     const [fullName, setfullName] = useState("");
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
     const [contact,setContact] = useState("");
- 
-    const submitForm = (event) =>{
+    const navigate = useNavigate();
+    const submitForm = async (event) =>{
         event.preventDefault();
         console.log(fullName,email,password,contact)
+        useEffect(() => {
+            const response = await fetch('http://localhost:1337/api/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    fullName,
+                    email,
+                    password,
+                    contact
+                }),
+            })
+    
+            const data = await response.json()
+    
+            if (data.status === 'ok') {
+                navigate('/Login')
+            }
+        }, [])
+        
+
     }
   return (
     

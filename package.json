@@ -6,11 +6,19 @@
     "@headlessui/react": "^1.7.4",
     "@heroicons/react": "^2.0.13",
     "cra-template": "1.2.0",
+<<<<<<< HEAD
     "date-fns": "^2.29.3",
     "flowbite": "^1.5.4",
     "flowbite-datepicker": "^1.2.2",
     "flowbite-react": "^0.3.5",
     "pure-react-carousel": "^1.30.1",
+=======
+    "dotenv": "^16.0.3",
+    "flowbite": "^1.5.4",
+    "flowbite-datepicker": "^1.2.2",
+    "flowbite-react": "^0.3.5",
+    "js-cookie": "^3.0.1",
+>>>>>>> 7844120a069a5381494f44738317fad1b846f343
     "react": "^18.2.0",
     "react-datepicker": "^4.8.0",
     "react-dom": "^18.2.0",
@@ -18,7 +26,8 @@
     "react-scripts": "5.0.1",
     "react-tailwindcss-datepicker": "^1.1.1",
     "swiper": "^8.4.5",
-    "tw-elements": "^1.0.0-alpha12"
+    "tw-elements": "^1.0.0-alpha12",
+    "universal-cookie": "^4.0.4"
   },
   "scripts": {
     "start": "react-scripts start",
