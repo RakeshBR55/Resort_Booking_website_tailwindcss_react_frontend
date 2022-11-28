@@ -38,7 +38,7 @@ const Navbar = () => {
               </Link>
             </li>
              {
-                token? <Link to="/Gallery" className="p-2">
+                token? <Link to="/userprofile" className="p-2">
                 User
               </Link>: <><Link to="/Signup" className="p-2">
                 Sign Up

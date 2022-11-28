@@ -12,10 +12,8 @@ const Signup = () => {
   
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
   async function registerUser(event) {
     event.preventDefault();
-
     const response = await fetch(`http://127.0.0.1:8800/api/user/register`, {
       method: "POST",
       headers: {
@@ -34,6 +32,10 @@ const Signup = () => {
     if (data.status === "ok") {
     alert('User successfully registered');
      navigate('/login')
+    }
+    else{
+      alert('error')
+      navigate('/register')
     }
   }
   return (

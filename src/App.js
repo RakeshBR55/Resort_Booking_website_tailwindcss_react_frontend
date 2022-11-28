@@ -8,6 +8,7 @@ import Hero from "./components/hero/Hero.jsx";
 import Carousel from "./components/carousel/Carousel.jsx";
 import BookingForm from "./components/bookingForm/BookingForm";
 import Payment from './pages/payment/Payment'
+import UserProfile from "./pages/userProfile/UserProfile";
 
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
         <Route path="/Carousel" element={<Carousel />} />
         <Route path="/BookingForm" element={<BookingForm />} />
         <Route path="/payment" element={<Payment />} />
-       
+        <Route path="/userprofile" element={<UserProfile/>}/>
       </Routes>
     </BrowserRouter>
   );
