@@ -1,6 +1,6 @@
 import React from "react";
 import { Link,useNavigate} from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -24,12 +24,13 @@ const Login = () => {
 			}),
 		})
 		const data = await response.json()
-        
+    console.log(data)
 		if (data.status === 'ok') {
+      localStorage.setItem('token',data.token);
 			alert('Login successful')
 			navigate('/')
 		} else {
-			alert('Please check your username and password')
+			alert('Please check your username and password or Invalid Credential')
 		}
 
 
