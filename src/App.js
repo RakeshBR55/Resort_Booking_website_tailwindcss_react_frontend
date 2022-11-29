@@ -9,6 +9,10 @@ import Carousel from "./components/carousel/Carousel.jsx";
 import BookingForm from "./components/bookingForm/BookingForm";
 import Payment from './pages/payment/Payment'
 import UserProfile from "./pages/userProfile/UserProfile";
+import Rooms from './pages/roomSelection/Rooms'
+import Attractiion from "./components/attraction/Attractiion";
+import './App.css';
+
 
 
 function App() {
@@ -22,8 +26,9 @@ function App() {
         <Route path="/Hero" element={<Hero />} />
         <Route path="/Carousel" element={<Carousel />} />
         <Route path="/BookingForm" element={<BookingForm />} />
-        <Route path="/payment" element={<Payment />} />
-        <Route path="/userprofile" element={<UserProfile/>}/>
+        <Route path="/Attraction" element={<Attractiion />} />
+        <Route path="/Rooms" element={<Rooms />} />
+        <Route path="/userprofile" element={<UserProfile />} />
       </Routes>
     </BrowserRouter>
   );

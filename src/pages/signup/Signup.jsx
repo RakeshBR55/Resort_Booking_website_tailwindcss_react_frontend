@@ -35,7 +35,7 @@ const Signup = () => {
     }
     else{
       alert('error')
-      navigate('/register')
+      navigate('/')
     }
   }
   return (

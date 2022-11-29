@@ -2,19 +2,18 @@ import React, { useState } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
-
-
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const handleNav = () => {
     setNav(!nav);
+    console.log(nav);
   };
+  
   const token = localStorage.getItem("token");
-  console.log(token)
+  console.log(token);
   return (
     <div
-      className="w-full h-[60px] bg-green-200
-    "
+      className="w-full h-[60px] bg-transparent -z-5"
     >
       <div className=" max-w-[1240px] mx-auto px-4 flex justify-between items-center h-full">
         <div>
@@ -37,17 +36,24 @@ const Navbar = () => {
                 Gallery
               </Link>
             </li>
-             {
-                token? <Link to="/userprofile" className="p-2">
+            {token ? (<>
+              <Link to="/userprofile" className="p-2">
                 User
-              </Link>: <><Link to="/Signup" className="p-2">
-                Sign Up
               </Link>
-              <Link to='/login' className="p-2">
-                Login
+              <Link to="/" className="p-2">
+                Logout
               </Link>
-             </>
-             }
+              </>
+            ) : (
+              <>
+                <Link to="/Signup" className="p-2">
+                  Sign Up
+                </Link>
+                <Link to="/login" className="p-2">
+                  Login 
+                </Link>
+              </>
+            )}
           </ul>
         </div>
 
@@ -65,11 +71,11 @@ const Navbar = () => {
         <div
           className={
             nav
-              ? " w-full bg-black text-white absolute top-[60px] left-0 flex justify-center text-center"
-              : "absolute left-[-100%]"
+              ? " w-[80vw] h-full bg-black text-white absolute top-0 right-0 flex justify-center text-center"
+              :   "absolute left-[-100%]"
           }
         >
-          <ul>
+          <ul className="h-[50vh] flex flex-col justify-around">
             <li>
               <Link to="/" className="p-2">
                 Home
@@ -86,20 +92,26 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-             {
-                token? `<Link to="/Gallery" className="p-2">
+            {token ? (
+              <Link to="/userprofile" className="p-2">
                 User
-              </Link>}`:` <Link to="/Signup" className="p-2">
-                Sign Up
               </Link>
+            ) : (
+              <>
+                <Link to="/Signup" className="p-2">
+                  Sign Up
+                </Link>
+                <Link to="/login" className="p-2">
+                  Login 
+                </Link>
+              </>
+            )}
             </li>
             <li>
-              <Link to="/Login" className="p-2">
-                Login
-              </Link>`
-             }
+              <button onClick={handleNav}>close</button>
             </li>
           </ul>
+          
         </div>
       </div>
     </div>
