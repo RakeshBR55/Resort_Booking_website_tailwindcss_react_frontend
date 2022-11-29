@@ -11,6 +11,7 @@ import Payment from './pages/payment/Payment'
 import UserProfile from "./pages/userProfile/UserProfile";
 import Rooms from './pages/roomSelection/Rooms'
 import Attractiion from "./components/attraction/Attractiion";
+import Dashboard from "./pages/dashboard/Dashboard";
 import './App.css';
 
 
@@ -29,6 +30,7 @@ function App() {
         <Route path="/Attraction" element={<Attractiion />} />
         <Route path="/Rooms" element={<Rooms />} />
         <Route path="/userprofile" element={<UserProfile />} />
+        <Route path='/dashboard' element={<Dashboard/>}/>
       </Routes>
     </BrowserRouter>
   );

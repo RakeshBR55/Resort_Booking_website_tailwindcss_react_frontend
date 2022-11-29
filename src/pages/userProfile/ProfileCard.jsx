@@ -2,7 +2,7 @@ import React from "react";
 
 const ProfileCard = () => {
   return (
-    <div className="">
+    
       <div className="w-[95vw] md:w-96 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
         <div className="flex justify-end px-4 pt-4"></div>
         <div className="flex flex-col items-center pb-10">
@@ -19,7 +19,7 @@ const ProfileCard = () => {
           </span>
         </div>
       </div>
-    </div>
+   
   );
 };
 

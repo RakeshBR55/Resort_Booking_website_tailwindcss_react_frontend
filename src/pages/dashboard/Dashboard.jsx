@@ -1,9 +1,14 @@
+import Sidebar from './Sidebar'
 import React from 'react'
+import DashHero from './DashHero'
 
-const dashboard = () => {
+const Dashboard = () => {
   return (
-    <div>dashboard</div>
+    <div className='flex w-full h-screen'>
+      <Sidebar/>
+      <DashHero/>
+    </div>
   )
 }
 
-export default dashboard
+export default Dashboard
