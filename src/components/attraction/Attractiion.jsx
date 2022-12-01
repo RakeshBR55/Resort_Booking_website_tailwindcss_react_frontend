@@ -7,17 +7,17 @@ import kali from "../../assets/kali.jpeg"
 import yana from "../../assets/yana.jpeg"
 
 const Attractiion = () => {
-  return (
-    <div className="container w-full mx-auto pt-8">
-    <div className=" bg-gradient-to-r from-rose-100 to-teal-100  rounded-lg text-center  mx-auto w-full ">
-                <h1 className="text-3xl p-2 truncate font-Rubik text-green-600">Attractions and destinations around our surroundings</h1>
+    return (
+        <div className="container w-full mx-auto pt-8">
+            <div className=" bg-gradient-to-r from-rose-100 to-teal-100  rounded-lg text-center  mx-auto w-full ">
+                <h1 className="text-3xl p-2 font-Rubik text-green-600">Attractions and destinations around our surroundings</h1>
             </div>
-    
+
             <div className="flex items-center justify-center w-full h-full py-24 sm:py-8 px-4 bg-gradient-to-t bg-gradient-to-r from-rose-100 to-teal-100">
-            
-            
-            
-            
+
+
+
+
                 {/* Carousel for desktop and large size devices */}
                 <CarouselProvider className="lg:block hidden" naturalSlideWidth={100} isIntrinsicHeight={true} totalSlides={12} visibleSlides={4} step={1} infinite={true}>
                     <div className="w-full relative flex items-center justify-center mr-10">
@@ -46,8 +46,8 @@ const Attractiion = () => {
                                             <div className="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
                                                 <h2 className="lg:text-xl leading-4 text-base lg:leading-5 text-white">Magod waterfalls</h2>
                                                 <div className="flex h-full items-end pb-6">
-                                                <p className="text-md lg:text-xl text-white">A breath taking view of a roaring waterfalls just 30km away from our resort</p>
-                                                    
+                                                    <p className="text-md lg:text-xl text-white">A breath taking view of a roaring waterfalls just 30km away from our resort</p>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -58,7 +58,7 @@ const Attractiion = () => {
                                             <div className="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
                                                 <h2 className="lg:text-xl leading-4 text-base lg:leading-5 text-white">Kali River</h2>
                                                 <div className="flex h-full items-end pb-6">
-                                                <p className="text-md lg:text-xl text-white">A wast infuriating dark colored river takes just 20km drive and infinite courage!</p>
+                                                    <p className="text-md lg:text-xl text-white">A wast infuriating dark colored river takes just 20km drive and infinite courage!</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -69,7 +69,7 @@ const Attractiion = () => {
                                             <div className="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
                                                 <h2 className="lg:text-xl leading-4 text-base lg:leading-5 text-white">Yana caves</h2>
                                                 <div className="flex h-full items-end pb-6">
-                                                <p className="text-md lg:text-xl text-white">The tall peaky rocks which makes you wonder, is nature herself an artist? a 40km drive will answer...</p>
+                                                    <p className="text-md lg:text-xl text-white">The tall peaky rocks which makes you wonder, is nature herself an artist? a 40km drive will answer...</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -482,7 +482,7 @@ const Attractiion = () => {
                 </CarouselProvider>
             </div>
         </div>
-  )
+    )
 }
 
 export default Attractiion
