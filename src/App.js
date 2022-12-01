@@ -28,6 +28,7 @@ function App() {
         <Route path="/Carousel" element={<Carousel />} />
         <Route path="/BookingForm" element={<BookingForm />} />
         <Route path="/Attraction" element={<Attractiion />} />
+        <Route path='/payment' element={<Payment/>} />
         <Route path="/Rooms" element={<Rooms />} />
         <Route path="/userprofile" element={<UserProfile />} />
         <Route path='/dashboard' element={<Dashboard/>}/>
