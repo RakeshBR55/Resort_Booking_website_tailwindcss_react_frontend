@@ -10,6 +10,9 @@ module.exports = {
       lg: '1024px',
       xl: '1280px',
     },
+    colors:{
+      'bl':'#3b82f680'
+    },
     extend: {
       fontFamily:{
         Rubik: ["Rubik distressed","cursive"],
