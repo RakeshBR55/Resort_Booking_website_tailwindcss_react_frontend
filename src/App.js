@@ -9,11 +9,11 @@ import Carousel from "./components/carousel/Carousel.jsx";
 import BookingForm from "./components/bookingForm/BookingForm";
 
 import UserProfile from "./pages/userProfile/UserProfile";
-import Rooms from './pages/roomSelection/Rooms'
+import Rooms from "./pages/roomSelection/Rooms";
 import Attractiion from "./components/attraction/Attractiion";
 import Dashboard from "./pages/dashboard/Dashboard";
-import './App.css';
-import Review from "./components/Review/Review.jsx"
+import "./App.css";
+import Review from "./components/Review/Review.jsx";
 import Footer from "./components/footer/Footer.jsx";
 import Checkout from "./pages/roomSelection/Checkout";
 import Gallery from "./pages/gallery/Gallery";
@@ -22,8 +22,7 @@ import Payment from "./pages/payment/Payment";
 import Content from "./components/Content/Content";
 import Booking from "./components/bookingForm/Booking";
 
-
-
+import SideBarSate from "./context/sideBarState";
 
 function App() {
   return (
