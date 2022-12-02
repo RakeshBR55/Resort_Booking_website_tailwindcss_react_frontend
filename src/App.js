@@ -1,10 +1,10 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/home/Home";
+import Home2 from "./pages/home/Home2";
 import Signup from "./pages/signup/Signup";
 import Login from "./pages/login/Login";
 import Navbar from "./components/navbar/Navbar";
-import Hero from "./components/hero/Hero.jsx";
+import Hero2 from "./components/hero/Hero2.jsx";
 import Carousel from "./components/carousel/Carousel.jsx";
 import BookingForm from "./components/bookingForm/BookingForm";
 
@@ -19,6 +19,8 @@ import Checkout from "./pages/roomSelection/Checkout";
 import Gallery from "./pages/gallery/Gallery";
 import Navbar2 from "./components/navbar/Navbar2";
 import Payment from "./pages/payment/Payment";
+import Content from "./components/Content/Content";
+import Booking from "./components/bookingForm/Booking";
 
 
 
@@ -27,11 +29,11 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home2 />} />
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Navbar" element={<Navbar />} />
-        <Route path="/Hero" element={<Hero />} />
+        <Route path="/Hero2" element={<Hero2 />} />
         <Route path="/Carousel" element={<Carousel />} />
         <Route path="/BookingForm" element={<BookingForm />} />
         <Route path="/Attraction" element={<Attractiion />} />
@@ -43,8 +45,9 @@ function App() {
         <Route path="/Checkout" element={<Checkout />} />
         <Route path="/Gallery" element={<Gallery />} />
         <Route path="/Navbar2" element={<Navbar2 />} />
-
+        <Route path="/Content" element={<Content />} />
         <Route path='/dashboard' element={<Dashboard/>}/>
+        <Route path='/Booking' element={<Booking/>}/>
       </Routes>
     </BrowserRouter>
   );

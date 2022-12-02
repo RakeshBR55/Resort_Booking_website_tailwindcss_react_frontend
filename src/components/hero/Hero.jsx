@@ -7,7 +7,7 @@ const Hero = () => {
     <div
       className="relative overflow-hidden bg-no-repeat bg-cover w-full mt-28 ml-10 lg:mx-auto"
       style={{
-        backgroundPposition: "50%",
+        backgroundPosition: "50%",
         backgroundImage: "url('https://images.unsplash.com/photo-1566571807426-61eca847576f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aG9tZXN0YXl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60')",
         height: "500px"
       }}

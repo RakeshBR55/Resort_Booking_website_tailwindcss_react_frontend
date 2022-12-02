@@ -1,32 +1,28 @@
 
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Navbar2 from "../../components/navbar/Navbar2";
 
 const Checkout = () => {
     const [show, setShow] = useState(false);
   return (
     <>
-            <div>
-                <div className="flex items-center justify-center py-8">
-                    <button onClick={() => setShow(!show)} className="py-2 px-10 rounded bg-indigo-600 hover:bg-indigo-700 text-white">
-                        Open Modal
-                    </button>
-                </div>
-                {show && (
-                    <div className="w-full h-full bg-black bg-opacity-90 top-0 overflow-y-auto overflow-x-hidden fixed sticky-0" id="chec-div">
-                        <div className="w-full absolute z-10 right-0 h-full overflow-x-hidden transform translate-x-0 transition ease-in-out duration-700" id="checkout">
+    <Navbar2 />
+        <div className="w-full mt-24 mx-auto h-full bg-black bg-opacity-90 top-0  sticky-0" id="chec-div">
+                        <div className="w-full absolute  h-full overflow-x-hidden transform translate-x-0 transition ease-in-out duration-700" id="checkout">
                             <div className="flex md:flex-row flex-col justify-end" id="cart">
-                                <div className="lg:w-1/2 w-full md:pl-10 pl-4 pr-10 md:pr-4 md:py-12 py-8 bg-white overflow-y-auto overflow-x-hidden h-screen" id="scroll">
+                                <div className=" w-full  pl-4 pr-10 md:pr-4  py-8 bg-white overflow-y-auto overflow-x-hidden h-screen" id="scroll">
                                     <div className="flex items-center text-gray-500 hover:text-gray-600 cursor-pointer" onClick={() => setShow(!show)}>
                                         <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-chevron-left" width={16} height={16} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                             <polyline points="15 6 9 12 15 18" />
                                         </svg>
-                                        <p className="text-sm pl-2 leading-none">Back</p>
+                                        <p className="text-sm pl-2 leading-none"> <Link to="/" >Back</Link></p>
                                     </div>
-                                    <p className="text-5xl font-black leading-10 text-gray-800 pt-3">Bag</p>
+                                    <p className="md:text-5xl text-3xl font-black leading-10 text-gray-800 pt-4">Select your suite</p>
                                     <div className="md:flex items-center mt-14 py-8 border-t border-gray-200">
                                         <div className="w-1/4">
-                                            <img src="https://cdn.tuk.dev/assets/templates/e-commerce-kit/bestSeller3.png" alt="tent" className="w-full h-full object-center object-cover" />
+                                            <img src="https://cdn.tuk.dev/assets/templates/e-commerce-kit/bestSeller3.png" alt="..." className="w-full h-full object-center object-cover" />
                                         </div>
                                         <div className="md:pl-3 md:w-3/4">
                                             <p className="text-xs leading-3 text-gray-800 md:pt-0 pt-4">RF293</p>
@@ -52,7 +48,7 @@ const Checkout = () => {
                                     </div>
                                     <div className="md:flex items-center py-8 border-t border-gray-200">
                                         <div className="w-1/4">
-                                            <img src="https://cdn.tuk.dev/assets/templates/e-commerce-kit/bestSeller2.png" alt="earphone" className="w-full h-full object-center object-cover" />
+                                            <img src="https://cdn.tuk.dev/assets/templates/e-commerce-kit/bestSeller2.png" alt="..." className="w-full h-full object-center object-cover" />
                                         </div>
                                         <div className="md:pl-3 md:w-3/4 w-full">
                                             <p className="text-xs leading-3 text-gray-800 md:pt-0 pt-4">RF293</p>
@@ -78,7 +74,7 @@ const Checkout = () => {
                                     </div>
                                     <div className="md:flex items-center py-8 border-t border-b border-gray-200">
                                         <div className="h-full w-1/4">
-                                            <img src="https://cdn.tuk.dev/assets/templates/e-commerce-kit/bestSeller1.png" alt="master suite" className="w-full h-full object-center object-cover" />
+                                            <img src="https://cdn.tuk.dev/assets/templates/e-commerce-kit/bestSeller1.png" alt="..." className="w-full h-full object-center object-cover" />
                                         </div>
                                         <div className="md:pl-3 md:w-3/4 w-full">
                                             <p className="text-xs leading-3 text-gray-800 md:pt-0 pt-4">RF293</p>
@@ -103,8 +99,8 @@ const Checkout = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="xl:w-1/2 md:w-1/3 xl:w-1/4 w-full bg-gray-100 h-full">
-                                    <div className="flex flex-col md:h-screen px-14 py-20 justify-between overflow-y-auto">
+                                <div className=" md:w-1/2  w-full bg-gray-100 h-full">
+                                    <div className="flex flex-col md:h-screen px-14 py-20  overflow-y-auto">
                                         <div>
                                             <p className="text-4xl font-black leading-9 text-gray-800">Summary</p>
                                             <div className="flex items-center justify-between pt-16">
@@ -121,7 +117,7 @@ const Checkout = () => {
                                             </div>
                                         </div>
                                         <div>
-                                            <div className="flex items-center pb-6 justify-between lg:pt-5 pt-20">
+                                            <div className="flex  items-center pb-6 justify-between md:mt-10  pt-20">
                                                 <p className="text-2xl leading-normal text-gray-800">Total</p>
                                                 <p className="text-2xl font-bold leading-normal text-right text-gray-800">$10,240</p>
                                             </div>
@@ -134,11 +130,8 @@ const Checkout = () => {
                             </div>
                         </div>
                     </div>
-                )}
-            </div>
-
-        
-        </>
+    </>
+    
   )
 }
 
