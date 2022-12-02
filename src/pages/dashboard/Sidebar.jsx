@@ -1,19 +1,9 @@
-import React,{useState,useContext} from "react";
-import sideBarContext from "../../context/sideBarContext";
 import DrawerElements1 from "../../static/DrawerElements";
 import DrawerComponent from "../../components/Dashboard/DrawerComponent";
 
 const Sidebar = () => {
-
-  const menu = useContext(sideBarContext)
-  console.log(menu.showMenu);
   return (
     <>
-    <div>
-      <a href="#">LOGO</a>
-      <button onClick={()=> menu.toggleMenu()}>Menu</button>
-      <p className="text-blue-500">{menu.showMenu}</p>
-    </div>
       <aside className="lg:block lg:w-64" aria-label="Sidebar">
         <div className="overflow-y-auto h-screen py-4 px-3 bg-gray-50 rounded dark:bg-gray-800 shadow-2xl">
           <a href="/" className="flex items-center pl-2.5 mb-5">
