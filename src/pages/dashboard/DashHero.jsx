@@ -2,6 +2,7 @@ import React from "react";
 import PieCharts from "../../components/Dashboard/PieChart";
 import Chart from "../../components/Dashboard/Charts";
 import DashCard from "./DashCard";
+import RecentBooking from "./RecentBooking";
 
 const DashHero = () => {
   return (
@@ -17,15 +18,17 @@ const DashHero = () => {
         <DashCard />
       </div>
       <div className="flex w-full flex-wrap">
-        <div className="w-96 h-64 space-y-10">
+        <div className="w-96 h-64 space-y-10 bg-gray-50 h-fulll">
           <h2 className="text-2xl text-center">Total Revenue</h2>
           <PieCharts />
         </div>
-        <div className="w-ful lg:w-[calc(100%-24rem)] h-96">
+        <div className="w-ful lg:w-[calc(100%-24rem)] h-96 bg-white">
           <Chart />
         </div>
       </div>
-      <div>Recent Bookings</div>
+      <div >
+        <RecentBooking/>
+      </div>
     </div>
   );
 };
