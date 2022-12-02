@@ -7,12 +7,19 @@ import Navbar from "./components/navbar/Navbar";
 import Hero from "./components/hero/Hero.jsx";
 import Carousel from "./components/carousel/Carousel.jsx";
 import BookingForm from "./components/bookingForm/BookingForm";
-import Payment from './pages/payment/Payment'
+
 import UserProfile from "./pages/userProfile/UserProfile";
 import Rooms from './pages/roomSelection/Rooms'
 import Attractiion from "./components/attraction/Attractiion";
 import Dashboard from "./pages/dashboard/Dashboard";
 import './App.css';
+import Review from "./components/Review/Review.jsx"
+import Footer from "./components/footer/Footer.jsx";
+import Checkout from "./pages/roomSelection/Checkout";
+import Gallery from "./pages/gallery/Gallery";
+import Navbar2 from "./components/navbar/Navbar2";
+import Payment from "./pages/payment/Payment";
+
 
 
 
@@ -31,6 +38,12 @@ function App() {
         <Route path='/payment' element={<Payment/>} />
         <Route path="/Rooms" element={<Rooms />} />
         <Route path="/userprofile" element={<UserProfile />} />
+        <Route path="/review" element={<Review />} />
+        <Route path="/footer" element={<Footer />} />
+        <Route path="/Checkout" element={<Checkout />} />
+        <Route path="/Gallery" element={<Gallery />} />
+        <Route path="/Navbar2" element={<Navbar2 />} />
+
         <Route path='/dashboard' element={<Dashboard/>}/>
       </Routes>
     </BrowserRouter>

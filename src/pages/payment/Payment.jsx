@@ -57,8 +57,8 @@ const Payment = () => {
         phone_number: "9113021966",
       },
     };
-    
-    //Creating razorpay window 
+
+    //Creating razorpay window
     const razorPay = new window.Razorpay(options);
     razorPay.open();
   }
@@ -66,14 +66,16 @@ const Payment = () => {
   return (
     <div>
       <h1>Amount:5000</h1>
-      <button
+      {/* Do touch the code below */}
+      <a
         className="App-link cursor-pointer"
         onClick={displayRazorpay}
         target="_blank"
         rel="noopener noreferrer"
       >
         Book Now
-      </button>
+      </a>
+      {/* Don't Touch the code above */}
     </div>
   );
 };

@@ -13,7 +13,7 @@ const Navbar = () => {
   console.log(token);
   return (
     <div
-      className="w-full h-[60px] bg-transparent -z-5"
+      className="w-full fixed bg-gradient-to-r hover:from-green-100 hover:to-yellow-500 top-0 z-50 h-[60px] backdrop-blur-xl drop-shadow-xl backdrop-brightness-100 bg-white-30"
     >
       <div className=" max-w-[1240px] mx-auto px-4 flex justify-between items-center h-full">
         <div>
@@ -29,6 +29,11 @@ const Navbar = () => {
             <li>
               <Link to="/About" className="p-2">
                 About
+              </Link>
+            </li>
+            <li>
+              <Link to="/Contact" className="p-2">
+                Contact
               </Link>
             </li>
             <li>
@@ -71,7 +76,7 @@ const Navbar = () => {
         <div
           className={
             nav
-              ? " w-[80vw] h-full bg-black text-white absolute top-0 right-0 flex justify-center text-center"
+              ? " w-[80vw] h-full bg-black z-64 text-white absolute top-0 right-0 flex justify-center text-center"
               :   "absolute left-[-100%]"
           }
         >

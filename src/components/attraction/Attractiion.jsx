@@ -10,7 +10,7 @@ const Attractiion = () => {
     return (
         <div className="container w-full mx-auto pt-8">
             <div className=" bg-gradient-to-r from-rose-100 to-teal-100  rounded-lg text-center  mx-auto w-full ">
-                <h1 className="text-3xl p-2 truncate font-Rubik text-green-600">Attractions and destinations around our surroundings</h1>
+                <h1 className="text-3xl p-2 font-Rubik text-green-600">Attractions and destinations around our surroundings</h1>
             </div>
 
             <div className="flex items-center justify-center w-full h-full py-24 sm:py-8 px-4 bg-gradient-to-t bg-gradient-to-r from-rose-100 to-teal-100">

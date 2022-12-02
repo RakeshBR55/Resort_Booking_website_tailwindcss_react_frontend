@@ -10,11 +10,11 @@ import riverRafting from "../../assets/riverRafting.jpeg";
 
 const Carousel = () => {
   return (
-    <div className="relative -m-20 -z-50">
+    <div className="relative -m-20 -z-50 ">
         
       <Swiper
         spaceBetween={30}
-        centeredSlides={true}
+        centeredSlides={false}
         autoplay={{
           delay: 5000,
           disableOnInteraction: false,
@@ -28,21 +28,21 @@ const Carousel = () => {
       >
         <SwiperSlide>
           <img
-            className="object-fill w-full h-screen"
+            className="object-center w-full h-screen"
             src={homestay}
             alt=" slide 1"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            className="object-fill w-full h-screen"
+            className="object-center w-full h-screen"
             src={yana}
             alt="slide 2"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            className="object-fill w-full h-screen"
+            className="object-center w-full h-screen"
             src={riverRafting}
             alt="slide 3"
           />
