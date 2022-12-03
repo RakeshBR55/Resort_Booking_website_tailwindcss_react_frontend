@@ -67,14 +67,14 @@ const Payment = () => {
     <div>
       <h1>Amount:5000</h1>
       {/* Do touch the code below */}
-      <a
+      <button
         className="App-link cursor-pointer"
         onClick={displayRazorpay}
         target="_blank"
         rel="noopener noreferrer"
       >
         Book Now
-      </a>
+      </button>
       {/* Don't Touch the code above */}
     </div>
   );

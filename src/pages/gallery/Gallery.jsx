@@ -1,11 +1,11 @@
 import React from 'react'
-import Navbar from '../../components/navbar/Navbar'
+import Navbar2 from '../../components/navbar/Navbar2'
 import Footer from '../../components/footer/Footer'
 
 const Gallery = () => {
   return (
     <div className=''>
-    <Navbar />
+    <Navbar2/>
     <h1 className='text-grey-600 mt-28 relative  font-Rubik text-3xl text-green-600 -z-1 md:text-5xl text-center'>Photo Gallery</h1>
         <section className="overflow-hidden text-gray-700 ">
   <div className="container px-5 py-2 mx-auto lg:pt-24 lg:px-32">

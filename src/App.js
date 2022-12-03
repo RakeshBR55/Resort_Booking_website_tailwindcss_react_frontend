@@ -24,9 +24,11 @@ import Booking from "./components/bookingForm/Booking";
 
 import SideBarSate from "./context/sideBarState";
 
+
 function App() {
   return (
     <BrowserRouter>
+    <SideBarSate>
       <Routes>
         <Route path="/" element={<Home2 />} />
         <Route path="/Signup" element={<Signup />} />
@@ -48,6 +50,7 @@ function App() {
         <Route path='/dashboard' element={<Dashboard/>}/>
         <Route path='/Booking' element={<Booking/>}/>
       </Routes>
+      </SideBarSate>
     </BrowserRouter>
   );
 }
