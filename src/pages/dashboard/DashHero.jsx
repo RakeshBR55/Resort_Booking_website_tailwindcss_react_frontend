@@ -3,6 +3,7 @@ import PieCharts from "../../components/Dashboard/PieChart";
 import Chart from "../../components/Dashboard/Charts";
 import DashCard from "./DashCard";
 import RecentBooking from "./RecentBooking";
+import UsersCard from "../../components/Dashboard/UsersCard";
 
 const DashHero = () => {
   return (
@@ -11,7 +12,7 @@ const DashHero = () => {
         <h2 className="text-3xl">Hello Admin !!</h2>{" "}
         <span className="text-xl">Welcome to Dashboard</span>
       </div>
-      <div className="space-y-2 md:space-y-0 flex flex-wrap justify-center lg:justify-between items-center">
+      <div className="space-y-2 md:space-y-0 flex flex-wrap justify-center lg:justify-around items-center">
         <DashCard />
         <DashCard />
         <DashCard />
@@ -28,6 +29,7 @@ const DashHero = () => {
       </div>
       <div >
         <RecentBooking/>
+        <UsersCard userId={'343234'} roomType={'1bhk'} booking={2} date={'23/12/22-24/12/22'}/>
       </div>
     </div>
   );

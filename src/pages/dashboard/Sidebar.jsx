@@ -1,24 +1,20 @@
-import DrawerElements1 from "../../static/DrawerElements";
+import {DrawerElements1,DrawerElements2} from "../../static/DrawerElements";
 import DrawerComponent from "../../components/Dashboard/DrawerComponent";
-
+import ProfileCard from '../userProfile/ProfileCard'
 const Sidebar = () => {
   return (
     <>
-      <aside className="lg:block lg:w-64" aria-label="Sidebar">
-        <div className="overflow-y-auto h-screen py-4 px-3 bg-gray-50 rounded dark:bg-gray-800 shadow-2xl">
-          <a href="/" className="flex items-center pl-2.5 mb-5">
-            <img
-              src="https://flowbite.com/docs/images/logo.svg"
-              className="mr-3 h-6 sm:h-7"
-              alt="Madhu Home Stay Logo"
-            />
-            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-              Madhu Home Stay
-            </span>
-          </a>
+      <aside className="lg:block w-64" aria-label="Sidebar">
+        <div className="overflow-y-auto h-screen py-4 px-3 bg-gray-50 rounded dark:bg-gray-800 shadow-2xl flex flex-col justify-around">
+          <ProfileCard width={'w-64'}/>
           <ul className="space-y-2">
-            {DrawerElements1.map((ele) => (
-              <DrawerComponent label={ele.label} Icon={ele.Icon} />
+            {DrawerElements1.map((ele,i) => (
+              <DrawerComponent label={ele.label} Icon={ele.Icon} key={i} />
+            ))}
+          </ul>
+          <ul>
+          {DrawerElements2.map((ele,i) => (
+              <DrawerComponent label={ele.label} Icon={ele.Icon} key={i} />
             ))}
           </ul>
         </div>
