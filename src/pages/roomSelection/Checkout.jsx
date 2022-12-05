@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar2 from "../../components/navbar/Navbar2";
 import CheckOutComponent from "../../components/checkout/CheckOutComponent";
+import { amountContext } from "../../context/amountContext";
 const Checkout = () => {
   const [show, setShow] = useState(false);
+  const amount = useContext(amountContext)
+
   return (
     <>
       <Navbar2 />
+
       <div
         className="w-full mt-24 mx-auto h-full bg-black bg-opacity-90 top-0  sticky-0"
         id="chec-div"
@@ -49,9 +53,9 @@ const Checkout = () => {
               </p>
 
               <div className="md:flex items-center py-8 border-t border-gray-200"></div>
-              <CheckOutComponent amount={9000} roomType={"1BHK"} capacity={2} />
-              <CheckOutComponent amount={8000} roomType={"1BHK"} capacity={2} />
-              <CheckOutComponent amount={7000} roomType={"1BHK"} capacity={2} />
+              <CheckOutComponent amount={9000} roomType={1} capacity={2} />
+              <CheckOutComponent amount={8000} roomType={2} capacity={2} />
+              <CheckOutComponent amount={7000} roomType={3} capacity={2} />
             </div>
 
             <div className=" md:w-1/2  w-full bg-gray-100 h-full">
@@ -85,7 +89,7 @@ const Checkout = () => {
                       Total
                     </p>
                     <p className="text-2xl font-bold leading-normal text-right text-gray-800">
-                      $10,240
+                      {amount.amount}
                     </p>
                   </div>
                   <button

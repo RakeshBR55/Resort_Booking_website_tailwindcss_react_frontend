@@ -22,7 +22,6 @@ const RecentBooking = () => {
             <BookingCard/>
             <BookingCard/>
             <BookingCard/>
-
         </div>
     </div>
   )

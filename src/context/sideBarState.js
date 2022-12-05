@@ -11,7 +11,6 @@ const SideBarSate = (props)=>{
         <sideBarContext.Provider value={{showMenu,toggleMenu}}>
             {props.children}
         </sideBarContext.Provider>
-
     )
 }
 

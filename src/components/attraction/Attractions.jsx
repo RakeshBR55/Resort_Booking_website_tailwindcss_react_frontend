@@ -13,7 +13,7 @@ const Attractions = () => {
         <div className="carousel-item active relative float-left w-full">
           <img src={bridge} className="block w-full" alt="Motorbike Smoke" />
           <div className="carousel-caption hidden md:block absolute text-center">
-            <h5 className="text-xl">First slide label</h5>
+            <h5 className="text-3xl font-bold  text-white">Hanging Bridge</h5>
             <p>Some representative placeholder content for the first slide.</p>
           </div>
         </div>
