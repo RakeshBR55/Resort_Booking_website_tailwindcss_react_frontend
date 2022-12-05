@@ -4,19 +4,20 @@ import { AmountState,amountContext } from "../../context/amountContext";
 
 const CheckOutComponent = ({ width = "w-1/4", roomType, amount, capacity }) => {
   const rooms = useContext(amountContext)
-
+  const date = new Date();
+  console.log(date);
   const [roomCounts, setroomCounts] = useState(0)
   const incrementer = ()=>{
     if(roomCounts == 4 ){
       return
     }
     setroomCounts(roomCounts+1)
-    rooms.setAmount(rooms.amount + ((roomCounts+1)*800))
+    rooms.setAmount(rooms.amount + 800)
   }
   const decrementer = ()=>{
     if(roomCounts == 0) return;
     setroomCounts(roomCounts-1)
-    rooms.setAmount(rooms.amount - ((roomCounts+1)*800))
+    rooms.setAmount(rooms.amount - 800)
   }
 
   return (
