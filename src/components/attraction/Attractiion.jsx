@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
-import bridge from "../../assets/hanging bridge.jpg"
+import bridge from "../../assets/hanging bridge.png"
 import magod from "../../assets/magod.jpg"
 import kali from "../../assets/kali.jpeg"
 import yana from "../../assets/yana.jpeg"

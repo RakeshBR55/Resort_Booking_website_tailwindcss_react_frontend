@@ -1,9 +1,14 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate, Routes, Route, Link } from "react-router-dom";
 import { BsFillPersonPlusFill } from "react-icons/bs";
 import { AiOutlineLogin } from "react-icons/ai";
+import Content from "../Content/Content";
 
 const Navbar2 = () => {
+  const navigate =useNavigate();
+  const navigateToContent =() =>{
+    navigate('/Content')
+  }
   const [show, setShow] = useState(null);
   const [profile, setProfile] = useState(false);
   const [product, setProduct] = useState(false);
@@ -20,7 +25,7 @@ const Navbar2 = () => {
               <div className="inset-y-0 left-0 flex items-center xl:hidden">
                 <div className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-100 focus:outline-none transition duration-150 ease-in-out">
                   <div className="visible xl:hidden">
-                    <ul className="p-2 border-r bg-white absolute rounded left-0 right-0 shadow mt-8 md:mt-8 hidden">
+                    <ul className="p-2 border-r bg-transparent absolute rounded left-0 right-0 shadow mt-8 md:mt-8 hidden">
                       <li className="flex xl:hidden cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
                         <div className="flex items-center">
                           <svg
@@ -178,7 +183,7 @@ const Navbar2 = () => {
                   </div>
                   <div
                     className="hidden close-m-menu text-gray-700"
-                    onclick="MenuHandler(this,false)"
+                    onClick="MenuHandler(this,false)"
                   >
                     <svg
                       aria-label="Close"
@@ -436,7 +441,7 @@ const Navbar2 = () => {
           </div>
         </nav>
         <nav>
-          <div className="py-4 px-6 w-full flex xl:hidden justify-between items-center bg-white fixed top-0 z-40">
+          <div className="py-4 px-6 w-full flex xl:hidden justify-between items-center bg-transparent backdrop-blur-xl fixed top-0 z-40">
             <div className="w-24">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -453,16 +458,18 @@ const Navbar2 = () => {
                 />
               </svg>
             </div>
-            <h1 className="text-base  text-gray-800 mr-28">Madhu home stay</h1>
+            <h1 className="text-base  text-gray-800 mr-28">Madhu Homestay</h1>
             <div className="flex items-center">
               <div
                 id="menu"
                 className="text-gray-800"
                 onClick={() => setShow(!show)}
+                
               >
                 {show ? (
                   ""
                 ) : (
+                  <>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="icon icon-tabler icon-tabler-menu-2"
@@ -480,8 +487,14 @@ const Navbar2 = () => {
                     <line x1={4} y1={12} x2={20} y2={12} />
                     <line x1={4} y1={18} x2={20} y2={18} />
                   </svg>
+                  
+                  </>
                 )}
               </div>
+              <Routes>
+          <Route path="/Content" element={<Content />} />
+          
+        </Routes>
             </div>
           </div>
           {/*Mobile responsive sidebar*/}
@@ -496,7 +509,7 @@ const Navbar2 = () => {
               className="bg-gray-800 opacity-50 w-full h-full"
               onClick={() => setShow(!show)}
             />
-            <div className="w-64 z-40 fixed overflow-y-auto z-40 top-0 bg-white shadow h-full flex-col justify-between xl:hidden pb-4 transition duration-150 ease-in-out">
+            <div className="w-64 fixed overflow-y-auto  bg-white shadow h-full flex-col justify-between xl:hidden pb-4 transition duration-150 ease-in-out">
               <div className="px-6 h-full">
                 <div className="flex flex-col justify-between h-full w-full">
                   <div>
@@ -531,7 +544,7 @@ const Navbar2 = () => {
                       <a className="cursor-pointer">
                         <li className="text-gray-800 pt-10">
                           <div className="flex items-center">
-                            <div className="w-6 h-6 md:w-8 md:h-8 text-indigo-700">
+                            <div className="w-6 h-6 md:w-8 md:h-8 ">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24"
@@ -542,7 +555,7 @@ const Navbar2 = () => {
                                 <path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" />
                               </svg>
                             </div>
-                            <p className="text-indigo-700 xl:text-base text-base ml-3">
+                            <p className=" xl:text-base text-base ml-3">
                               <Link to="/" className="p-2">
                                 Home
                               </Link>

@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home2 from "./pages/home/Home2";
 import Signup from "./pages/signup/Signup";
 import Login from "./pages/login/Login";
-import Navbar from "./components/navbar/Navbar";
 import Hero2 from "./components/hero/Hero2.jsx";
 import Carousel from "./components/carousel/Carousel.jsx";
 import BookingForm from "./components/bookingForm/BookingForm";
@@ -21,8 +20,8 @@ import Navbar2 from "./components/navbar/Navbar2";
 import Payment from "./pages/payment/Payment";
 import Content from "./components/Content/Content";
 import Booking from "./components/bookingForm/Booking";
-
 import SideBarSate from "./context/sideBarState";
+import Contact from "./pages/contact/Contact";
 
 
 function App() {
@@ -33,7 +32,7 @@ function App() {
         <Route path="/" element={<Home2 />} />
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/Navbar" element={<Navbar />} />
+        <Route path='/contact' element={<Contact/>}/>
         <Route path="/Hero2" element={<Hero2 />} />
         <Route path="/Carousel" element={<Carousel />} />
         <Route path="/BookingForm" element={<BookingForm />} />
