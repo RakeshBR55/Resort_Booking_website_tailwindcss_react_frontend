@@ -2,19 +2,31 @@ import {React,useContext} from 'react'
 import Menu from '../../components/Dashboard/Menu'
 import Sidebar from './Sidebar'
 import sideBarContext from "../../context/sideBarContext";
+import UsersCard from '../../components/Dashboard/UsersCard';
 
 const Users = () => {
   const show = useContext(sideBarContext);
 
   return (
-    <div className="flex flex-col w-full h-screen">
-    <div className={show.showMenu?`fixed top-0 left-0 z-50`:`fixed top-0 -left-64 lg:left-0 w-64`}>
-      <Sidebar />
+    <div className='flex justify-center items-center w-full bg-gray-50 shadow-xl rounded-md flex-wrap p-5 space-y-5'>
+        <div className='w-full flex justify-between'>
+           <h3 className='text-2xl'>Users</h3><span>Fast 10 days</span>
+        </div>
+        <div className='w-full space-y-5'>
+            <ul className='flex text-xl justify-between items-center'>
+                <li>User</li>
+                <li>Room Type<span>(rooms)</span></li>
+                <li>Date</li>
+            </ul>
+            <UsersCard/>
+            <UsersCard/>
+            <UsersCard/>
+            <UsersCard/>
+            <UsersCard/>
+            <UsersCard/>
+            <UsersCard/>
+        </div>
     </div>
-    <div className="absolute lg:w-[calc(100%-16rem)] top-0 left-0 lg:left-64 h-[200vh] p-10 bg-blue-100">
-      <Menu/>
-    </div>
-  </div>
   )
 }
 

@@ -13,28 +13,35 @@ import Payment from "./pages/payment/Payment";
 import Booking from "./components/bookingForm/Booking";
 import SideBarSate from "./context/sideBarState";
 import Users from "./pages/dashboard/Users";
-
-
+import Navbar2 from "./components/navbar/Navbar2";
+import Footer from "./components/footer/Footer";
+import DashHero from "./pages/dashboard/DashHero";
+import DashRooms from "./pages/dashboard/Rooms";
+import { AmountState } from "./context/amountContext";
 function App() {
   return (
     <BrowserRouter>
       <SideBarSate>
-        <Routes>
-          <Route path="/" element={<Home2 />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/bookingForm" element={<BookingForm />} />
-          <Route path="/payment" element={<Payment />} />
-          <Route path="/rooms" element={<Rooms />} />
-          <Route path="/userprofile" element={<UserProfile />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/booking" element={<Booking />} />
-          <Route path="dashboard" element={<Dashboard />}>
-            <Route path="users" element={<Users />} />
-            <Route path="booking" element={<Booking />} />
-          </Route>
-        </Routes>
+        <AmountState>
+          <Routes>
+            <Route path="/">
+              <Route index element={<Home2 />} />
+              <Route path="signup" element={<Signup />} />
+              <Route path="login" element={<Login />} />
+              <Route path="bookingForm" element={<BookingForm />} />
+              <Route path="payment" element={<Payment />} />
+              <Route path="rooms" element={<Rooms />} />
+              <Route path="userprofile" element={<UserProfile />} />
+              <Route path="checkout" element={<Checkout />} />
+              <Route path="gallery" element={<Gallery />} />
+            </Route>
+            <Route path="/dashboard" element={<Dashboard />}>
+              <Route path="" element={<DashHero/>} />
+              <Route path="users" element={<Users />} />
+              <Route path="rooms" element={<DashRooms />} />
+            </Route>
+          </Routes>
+        </AmountState>
       </SideBarSate>
     </BrowserRouter>
   );

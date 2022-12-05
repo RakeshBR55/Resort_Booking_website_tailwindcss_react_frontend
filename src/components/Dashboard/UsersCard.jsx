@@ -1,6 +1,6 @@
 import React from 'react'
 import user from '../../assets/User.jpg'
-const UsersCard = ({userId,fullName,roomType,booking,date}) => {
+const UsersCard = ({userId='321323',fullName,roomType='1bhk',rooms='none',date='23-24'}) => {
   return (
     <div>
       <ul className="flex justify-between border-b-[1px] items-center">
@@ -10,10 +10,8 @@ const UsersCard = ({userId,fullName,roomType,booking,date}) => {
                 <h3>Manoj Bhat</h3>
                 <p>bhatmanoj@gmail.com</p>
             </span>
-        </li>
-        <li>{userId}</li>
-        <li>{roomType}</li>
-        <li>{booking}</li>
+        </li>        
+        <li>{roomType}({rooms})</li>
         <li>{date}</li>
       </ul>
     </div>

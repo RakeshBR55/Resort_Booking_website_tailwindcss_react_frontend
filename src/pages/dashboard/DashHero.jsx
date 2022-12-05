@@ -18,9 +18,9 @@ const DashHero = () => {
         <DashCard />
         <DashCard />
       </div>
-      <div className="flex w-full flex-wrap">
-        <div className="w-96 h-64 space-y-10 bg-gray-50 h-fulll">
-          <h2 className="text-2xl text-center">Total Revenue</h2>
+      <div className="flex w-full flex-wrap justify-between">
+        <div className="space-y-10 w-80 bg-gray-50 h-fulll">
+          <h2 className="text-2xl text-center">Total Bookings</h2>
           <PieCharts />
         </div>
         <div className="w-ful lg:w-[calc(100%-24rem)] h-96 bg-white">
@@ -29,7 +29,7 @@ const DashHero = () => {
       </div>
       <div >
         <RecentBooking/>
-        <UsersCard userId={'343234'} roomType={'1bhk'} booking={2} date={'23/12/22-24/12/22'}/>
+        
       </div>
     </div>
   );
