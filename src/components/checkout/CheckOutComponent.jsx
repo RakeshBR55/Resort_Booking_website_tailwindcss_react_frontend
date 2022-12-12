@@ -3,21 +3,27 @@ import roomImg from "../../assets/room1.jpg";
 import { AmountState,amountContext } from "../../context/amountContext";
 
 const CheckOutComponent = ({ width = "w-1/4", roomType, amount, capacity }) => {
-  const rooms = useContext(amountContext)
-  const date = new Date();
-  console.log(date);
+
+  const roomDetails = useContext(amountContext)
+
   const [roomCounts, setroomCounts] = useState(0)
+  // console.log(Object.values(roomDetails.roomInfo)[roomType-1])
+  console.log(roomDetails.roomInfo[roomType]['selectedRoom'])
   const incrementer = ()=>{
     if(roomCounts == 4 ){
       return
     }
-    setroomCounts(roomCounts+1)
-    rooms.setAmount(rooms.amount + 800)
+    setroomCounts(prev => prev + 1)
+    console.log(roomCounts)
+    roomDetails.roomInfo[roomType]['selectedRoom'] = roomCounts;
+    roomDetails.setAmount(roomDetails.amount + 800)
   }
+
   const decrementer = ()=>{
     if(roomCounts == 0) return;
     setroomCounts(roomCounts-1)
-    rooms.setAmount(rooms.amount - 800)
+    roomDetails.roomInfo[roomType-1]['selectedRoom'] = roomCounts;
+    roomDetails.setAmount(roomDetails.amount - 800)
   }
 
   return (

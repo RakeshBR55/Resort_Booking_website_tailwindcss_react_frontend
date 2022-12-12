@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 
 const Signup = () => {
   const URL = process.env.URL
-  console.log(URL)
   const [fullName, setfullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

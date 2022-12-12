@@ -12,7 +12,7 @@ const Test = () => {
       const data = await response.json();
       console.log(data)
     }, [])
-    
+
   return (
     <div>Testing the route and cookie</div>
   )

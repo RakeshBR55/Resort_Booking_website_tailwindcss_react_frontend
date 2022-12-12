@@ -5,12 +5,12 @@ import CheckOutComponent from "../../components/checkout/CheckOutComponent";
 import { amountContext } from "../../context/amountContext";
 const Checkout = () => {
   const [show, setShow] = useState(false);
-  const amount = useContext(amountContext)
-
+  const roomDetails = useContext(amountContext)
+ 
+  console.log(roomDetails.roomInfo)
   return (
     <>
       <Navbar2 />
-
       <div
         className="w-full mt-24 mx-auto h-full bg-black bg-opacity-90 top-0  sticky-0"
         id="chec-div"
@@ -89,7 +89,7 @@ const Checkout = () => {
                       Total
                     </p>
                     <p className="text-2xl font-bold leading-normal text-right text-gray-800">
-                      {amount.amount}
+                      {roomDetails.amount}
                     </p>
                   </div>
                   <button

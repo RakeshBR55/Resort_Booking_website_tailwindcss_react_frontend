@@ -10,7 +10,7 @@ const ProfileCard = ({ width,name='Manoj Bhat',email='bhatmanoj@gmail.com' }) =>
         <img
           className="w-28 h-28 mb-3 rounded-full shadow-lg"
           src={user}
-          alt="Bonnie image"
+          alt="user image"
         />
         <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
           Manoj Bhat
