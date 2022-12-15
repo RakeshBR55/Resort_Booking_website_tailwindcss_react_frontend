@@ -1,6 +1,6 @@
 import {DrawerElements1,DrawerElements2} from "../../static/DrawerElements";
 import DrawerComponent from "../../components/Dashboard/DrawerComponent";
-// import ProfileCard from '../userProfile/ProfileCard'
+import ProfileCard from '../userProfile/ProfileCard'
 const Sidebar = () => {
   return (
     <>

@@ -1,12 +1,8 @@
 import React from "react";
-import Footer from "../../components/footer/Footer";
-import Navbar2 from "../../components/navbar/Navbar2";
-
 
 const Gallery = () => {
   return (
     <div className="">
-      <Navbar2/>
       <h1 className="text-grey-600 mt-28 relative  font-Rubik text-3xl text-green-600 -z-1 md:text-5xl text-center">
         Photo Gallery
       </h1>
@@ -114,7 +110,6 @@ const Gallery = () => {
           </div>
         </div>
       </section>
-      <Footer/>
     </div>
   );
 };

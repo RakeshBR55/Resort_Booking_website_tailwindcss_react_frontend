@@ -1,5 +1,5 @@
 
-import sideBarContext from "../../context/sideBarContext";
+import {sideBarContext} from "../../context/sideBarContext";
 import React, { useContext } from "react";
 import  { CgMenuRound }from 'react-icons/cg'
 const Menu = () => {

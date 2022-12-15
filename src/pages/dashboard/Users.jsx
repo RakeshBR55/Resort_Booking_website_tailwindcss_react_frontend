@@ -1,12 +1,7 @@
-import {React,useContext} from 'react'
-import Menu from '../../components/Dashboard/Menu'
-import Sidebar from './Sidebar'
-import sideBarContext from "../../context/sideBarContext";
+import {React} from 'react'
 import UsersCard from '../../components/Dashboard/UsersCard';
 
 const Users = () => {
-  const show = useContext(sideBarContext);
-
   return (
     <div className='flex justify-center items-center w-full bg-gray-50 shadow-xl rounded-md flex-wrap p-5 space-y-5'>
         <div className='w-full flex justify-between'>
