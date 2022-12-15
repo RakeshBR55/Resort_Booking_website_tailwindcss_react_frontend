@@ -5,21 +5,19 @@ import CheckOutComponent from "../../components/checkout/CheckOutComponent";
 import { AmountContext } from "../../context/amountContext";
 
 const Checkout = () => {
-
-  const {roomState,amount} = useContext(AmountContext)
-  console.log(roomState)
+  const { roomState, amount } = useContext(AmountContext);
+  console.log(roomState);
   const token = localStorage.getItem("token"); //Token for user Auth
   const __DEV__ = document.domain === "localhost";
-
 
   async function displayRazorpay() {
     const data = await fetch("http://127.0.0.1:8800/payment", {
       method: "POST",
       headers: {
         "x-access-token": localStorage.getItem("token"),
-        'Content-Type':'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({amount}),
+      body: JSON.stringify({ amount }),
     }).then((t) => t.json());
 
     const options = {
@@ -27,7 +25,8 @@ const Checkout = () => {
       amount: data.amount.toString(),
       currency: data.currency,
       name: "Madhu Home Stay",
-      description: "Thank you for booking, your room will be booked after the payment",
+      description:
+        "Thank you for booking, your room will be booked after the payment",
       order_id: data.id,
 
       //Handler function for payment verification
@@ -36,7 +35,7 @@ const Checkout = () => {
           razorpayPaymentId: response.razorpay_payment_id,
           razropayOrderId: response.razorpay_order_id,
           razorpaySignature: response.razorpay_signature,
-          bookingDetails:roomState
+          bookingDetails: roomState,
         };
 
         //Payment Verification
@@ -113,7 +112,9 @@ const Checkout = () => {
                 Select your suite
               </p>
 
-              <div className="md:flex items-center py-8 border-t border-gray-200"></div>
+              <div className="md:flex items-center py-8 border-t border-gray-200">
+                {/* ------------Date Picker--------------- */}
+              </div>
               <CheckOutComponent amount={9000} roomType={1} capacity={2} />
               <CheckOutComponent amount={8000} roomType={2} capacity={2} />
               <CheckOutComponent amount={7000} roomType={3} capacity={2} />
