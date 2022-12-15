@@ -1,16 +1,76 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Navbar2 from "../../components/navbar/Navbar2";
 import CheckOutComponent from "../../components/checkout/CheckOutComponent";
-import { amountContext } from "../../context/amountContext";
-const Checkout = () => {
-  const [show, setShow] = useState(false);
-  const amount = useContext(amountContext)
+import { AmountContext } from "../../context/amountContext";
 
+const Checkout = () => {
+  const { roomState, amount } = useContext(AmountContext);
+  console.log(roomState);
+  const token = localStorage.getItem("token"); //Token for user Auth
+  const __DEV__ = document.domain === "localhost";
+
+  async function displayRazorpay() {
+    const data = await fetch("http://127.0.0.1:8800/payment", {
+      method: "POST",
+      headers: {
+        "x-access-token": localStorage.getItem("token"),
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ amount }),
+    }).then((t) => t.json());
+
+    const options = {
+      key: __DEV__ ? process.env.RAZOR_PAY_ID : "PRODUCTION_KEY",
+      amount: data.amount.toString(),
+      currency: data.currency,
+      name: "Madhu Home Stay",
+      description:
+        "Thank you for booking, your room will be booked after the payment",
+      order_id: data.id,
+
+      //Handler function for payment verification
+      handler: async function (response) {
+        const data = {
+          razorpayPaymentId: response.razorpay_payment_id,
+          razropayOrderId: response.razorpay_order_id,
+          razorpaySignature: response.razorpay_signature,
+          bookingDetails: roomState,
+        };
+
+        //Payment Verification
+        const verify = await fetch("http://127.0.0.1:8800/verification", {
+          method: "POST",
+          headers: {
+            "x-access-token": token,
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        const res = await verify.json();
+        if (res.status === "ok") {
+          alert("Payment Successful");
+        } else {
+          alert("payment failed");
+        }
+      },
+
+      //Prefill for Payment form
+      prefill: {
+        name: "Abhishek Bhat",
+        email: "abhi@gmail.com",
+        phone_number: "9113021966",
+      },
+    };
+
+    //Creating razorpay window
+    const razorPay = new window.Razorpay(options);
+    razorPay.open();
+  }
   return (
     <>
       <Navbar2 />
-
       <div
         className="w-full mt-24 mx-auto h-full bg-black bg-opacity-90 top-0  sticky-0"
         id="chec-div"
@@ -26,7 +86,7 @@ const Checkout = () => {
             >
               <div
                 className="flex items-center text-gray-500 hover:text-gray-600 cursor-pointer"
-                onClick={() => setShow(!show)}
+                // onClick={() => setShow(!show)}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +112,9 @@ const Checkout = () => {
                 Select your suite
               </p>
 
-              <div className="md:flex items-center py-8 border-t border-gray-200"></div>
+              <div className="md:flex items-center py-8 border-t border-gray-200">
+                {/* ------------Date Picker--------------- */}
+              </div>
               <CheckOutComponent amount={9000} roomType={1} capacity={2} />
               <CheckOutComponent amount={8000} roomType={2} capacity={2} />
               <CheckOutComponent amount={7000} roomType={3} capacity={2} />
@@ -89,12 +151,14 @@ const Checkout = () => {
                       Total
                     </p>
                     <p className="text-2xl font-bold leading-normal text-right text-gray-800">
-                      {amount.amount}
+                      {amount}
                     </p>
                   </div>
                   <button
-                    onClick={() => setShow(!show)}
+                    onClick={displayRazorpay}
                     className="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Checkout
                   </button>

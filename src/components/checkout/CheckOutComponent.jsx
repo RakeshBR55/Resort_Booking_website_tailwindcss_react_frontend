@@ -1,23 +1,30 @@
 import {React,useContext,useState} from "react";
 import roomImg from "../../assets/room1.jpg";
-import { AmountState,amountContext } from "../../context/amountContext";
+import { AmountContext } from "../../context/amountContext";
 
-const CheckOutComponent = ({ width = "w-1/4", roomType, amount, capacity }) => {
-  const rooms = useContext(amountContext)
-  const date = new Date();
-  console.log(date);
+const CheckOutComponent = ({ width = "w-1/4", roomType, capacity }) => {
+
+  const {setAmount,amount,dispatch,roomState} = useContext(AmountContext)
+  
   const [roomCounts, setroomCounts] = useState(0)
-  const incrementer = ()=>{
-    if(roomCounts == 4 ){
+  const roomCost = roomState[roomType]['roomCost']
+ 
+  const incrementer = (e)=>{
+    e.preventDefault()
+    if(roomCounts === 4 ){
       return
     }
     setroomCounts(roomCounts+1)
-    rooms.setAmount(rooms.amount + 800)
+    dispatch({type:'ADD_ROOM',room:{'roomType':roomType,'count':roomCounts}})
+    setAmount(amount + 800)
   }
-  const decrementer = ()=>{
-    if(roomCounts == 0) return;
+
+  const decrementer = (e)=>{
+    e.preventDefault();
+    if(roomCounts === 0) return;
     setroomCounts(roomCounts-1)
-    rooms.setAmount(rooms.amount - 800)
+    dispatch({type:'REMOVE_ROOM',room:{'roomType':roomType,'count':roomCounts}})
+    setAmount(amount - 800)
   }
 
   return (
@@ -45,7 +52,7 @@ const CheckOutComponent = ({ width = "w-1/4", roomType, amount, capacity }) => {
           </p>
           <div className="flex items-center justify-between pt-5 pr-6">
             <p className="text-3xl font-black leading-none text-gray-800 w-full text-right">
-              {amount}
+              {roomCost}
             </p>
           </div>
           <div className="flex text-2xl space-x-10">

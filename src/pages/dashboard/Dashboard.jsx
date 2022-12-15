@@ -2,7 +2,7 @@ import { React, useContext } from "react";
 import Sidebar from "./Sidebar";
 
 import Menu from "../../components/Dashboard/Menu";
-import sideBarContext from "../../context/sideBarContext";
+import {sideBarContext} from "../../context/sideBarContext";
 import { Outlet } from "react-router-dom";
 
 const Dashboard = () => {

@@ -1,16 +1,15 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 
 const Signup = () => {
-  const URL = process.env.URL
-  console.log(URL)
+  // const URL = process.env.URL
   const [fullName, setfullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [contact, setContact] = useState("");
   
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   async function registerUser(event) {
     event.preventDefault();
@@ -28,7 +27,7 @@ const Signup = () => {
     });
 
     const data = await response.json();
-
+    console.log(data)
     if (data.status === "ok") {
     alert('User successfully registered');
      navigate('/login')
@@ -101,19 +100,19 @@ const Signup = () => {
 
           <div className="text-center text-sm text-grey-dark mt-4">
             By signing up, you agree to the{" "}
-            <a
+            <li
               className="underline border-b border-grey-dark text-grey-dark"
               href="#"
             >
               Terms of Service
-            </a>{" "}
+            </li>{" "}
             and{" "}
-            <a
+            <li
               className="no-underline border-b border-grey-dark text-grey-dark"
               href="#"
             >
               Privacy Policy
-            </a>
+            </li>
           </div>
         </form>
 

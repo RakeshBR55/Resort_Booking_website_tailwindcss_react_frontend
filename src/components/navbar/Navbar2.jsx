@@ -1,18 +1,15 @@
 import React, { useState } from "react";
-import { useNavigate, Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import { BsFillPersonPlusFill } from "react-icons/bs";
 import { AiOutlineLogin } from "react-icons/ai";
 import Content from "../Content/Content";
 
 const Navbar2 = () => {
-  const navigate =useNavigate();
-  const navigateToContent =() =>{
-    navigate('/Content')
-  }
+  
   const [show, setShow] = useState(null);
   const [profile, setProfile] = useState(false);
-  const [product, setProduct] = useState(false);
-  const [deliverables, setDeliverables] = useState(false);
+  // const [product, setProduct] = useState(false);
+  // const [deliverables, setDeliverables] = useState(false);
   const token = localStorage.getItem("token");
   return (
     <>
@@ -25,7 +22,6 @@ const Navbar2 = () => {
                 <div className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-100 focus:outline-none transition duration-150 ease-in-out">
                   <div className="visible xl:hidden">
                     <svg
-                      onClick="MenuHandler(this,true)"
                       aria-haspopup="true"
                       aria-label="Main Menu"
                       xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +42,6 @@ const Navbar2 = () => {
                   </div>
                   <div
                     className="hidden close-m-menu text-gray-700"
-                    onClick="MenuHandler(this,false)"
                   >
                     <svg
                       aria-label="Close"
@@ -97,8 +92,8 @@ const Navbar2 = () => {
               </div>
               <div className="flex">
                 <div className="hidden xl:flex md:mr-6 xl:mr-16">
-                  <a
-                    href="javascript: void(0)"
+                  <li
+                    
                     className="flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out"
                   >
                     <span className="mr-2">
@@ -115,9 +110,8 @@ const Navbar2 = () => {
                     <Link to="/" className="p-2">
                       Home
                     </Link>
-                  </a>
-                  <a
-                    href="javascript: void(0)"
+                  </li>
+                  <li
                     className="flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out"
                   >
                     <span className="mr-2">
@@ -140,15 +134,14 @@ const Navbar2 = () => {
                     <Link to="/About" className="p-2">
                       About
                     </Link>
-                  </a>
-                  <a
-                    href="javascript: void(0)"
+                  </li>
+                  <li
                     className="flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out"
                   >
                     <span className="mr-2">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        enable-background="new 0 0 64 64"
+                        enableBackground="new 0 0 64 64"
                         width={20}
                         height={20}
                         viewBox="0 0 64 64"
@@ -165,9 +158,8 @@ const Navbar2 = () => {
                     <Link to="/Contact" className="p-2">
                       Contact
                     </Link>
-                  </a>
-                  <a
-                    href="javascript: void(0)"
+                  </li>
+                  <li
                     className="flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out"
                   >
                     <span className="mr-2">
@@ -175,7 +167,7 @@ const Navbar2 = () => {
                         xmlns="http://www.w3.org/2000/svg"
                         width={20}
                         height={20}
-                        enable-background="new 0 0 24 24"
+                        enableBackground="new 0 0 24 24"
                         viewBox="0 0 24 24"
                       >
                         <path
@@ -193,7 +185,7 @@ const Navbar2 = () => {
                     <Link to="/Gallery" className="p-2">
                       Gallery
                     </Link>
-                  </a>
+                  </li>
                   {token ? (
                     <>
                       <div
@@ -281,24 +273,23 @@ const Navbar2 = () => {
                     </>
                   ) : (
                     <>
-                      <a
-                        href="javascript: void(0)"
+                      <li
+                        href=""
                         className="flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out"
                       >
                         <BsFillPersonPlusFill />
                         <Link to="/Signup" className="p-2">
                           Sign Up
                         </Link>
-                      </a>
-                      <a
-                        href="javascript: void(0)"
+                      </li>
+                      <li
                         className="flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out"
                       >
                         <AiOutlineLogin />
                         <Link to="/login" className="p-2">
                           Login
                         </Link>
-                      </a>
+                      </li>
                     </>
                   )}
                 </div>
@@ -412,7 +403,7 @@ const Navbar2 = () => {
                       </div>
                     </div>
                     <ul className="f-m-m">
-                      <a className="cursor-pointer">
+                      <div className="cursor-pointer">
                         <li className="text-gray-800 pt-10">
                           <div className="flex items-center">
                             <div className="w-6 h-6 md:w-8 md:h-8 ">
@@ -433,8 +424,8 @@ const Navbar2 = () => {
                             </p>
                           </div>
                         </li>
-                      </a>
-                      <a className="cursor-pointer">
+                      </div>
+                      <div className="cursor-pointer">
                         <li className="text-gray-800 pt-8">
                           <div className="flex items-center justify-between">
                             <div className="flex items-center">
@@ -461,14 +452,14 @@ const Navbar2 = () => {
                             </div>
                           </div>
                         </li>
-                      </a>
-                      <a className="cursor-pointer">
+                      </div>
+                      <div className="cursor-pointer">
                         <li className="text-gray-800 pt-8">
                           <div className="flex items-center">
                             <div className="w-6 h-6 md:w-8 md:h-8 text-gray-800">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                enable-background="new 0 0 64 64"
+                                enableBackground="new 0 0 64 64"
                                 width={20}
                                 height={20}
                                 viewBox="0 0 64 64"
@@ -489,7 +480,7 @@ const Navbar2 = () => {
                             </p>
                           </div>
                         </li>
-                      </a>
+                      </div>
                       <li className="text-gray-800 pt-8 cursor-pointer">
                         <div className="flex items-center justify-between">
                           <div className="flex items-center">
@@ -498,7 +489,7 @@ const Navbar2 = () => {
                                 xmlns="http://www.w3.org/2000/svg"
                                 width={20}
                                 height={20}
-                                enable-background="new 0 0 24 24"
+                                enableBackground="new 0 0 24 24"
                                 viewBox="0 0 24 24"
                               >
                                 <path

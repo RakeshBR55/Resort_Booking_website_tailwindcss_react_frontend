@@ -1,7 +1,19 @@
-import { createContext} from "react";
+import { createContext,useState} from "react";
 
-const  sideBarContext = createContext();
+export const  sideBarContext = createContext();
 
-export default sideBarContext;
+export const SideBarState = (props)=>{
+    
+    const [showMenu, setShowMenu] = useState(false)
 
+    const toggleMenu =  ()=>{
+        setShowMenu(!showMenu);
+    }
+
+    return (
+        <sideBarContext.Provider value={{showMenu,toggleMenu}}>
+            {props.children}
+        </sideBarContext.Provider>
+    )
+}
 
