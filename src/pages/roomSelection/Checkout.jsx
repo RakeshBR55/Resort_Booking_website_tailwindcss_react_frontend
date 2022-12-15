@@ -1,11 +1,29 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar2 from "../../components/navbar/Navbar2";
 import CheckOutComponent from "../../components/checkout/CheckOutComponent";
 import { AmountContext } from "../../context/amountContext";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const Checkout = () => {
+  const [startDate, setStartDate] = useState(new Date());
+  console.log(startDate)
+  const [endDate, setendDate] = useState(new Date());
+  console.log(endDate)
   const { roomState, amount } = useContext(AmountContext);
+  function dayCount(startDate, endDate) {
+    var milliseconds1 = startDate.getTime();
+    var milliseconds2 = endDate.getTime();
+    
+    var differenceMs = milliseconds2 - milliseconds1;
+    return Math.round(differenceMs/1000/60/60/24);
+  }
+  var days = dayCount(startDate, endDate)
+  console.log(days)
+
+  // above code with "days" is for no of days
+  
   console.log(roomState);
   const token = localStorage.getItem("token"); //Token for user Auth
   const __DEV__ = document.domain === "localhost";
@@ -112,9 +130,28 @@ const Checkout = () => {
                 Select your suite
               </p>
 
-              <div className="md:flex items-center py-8 border-t border-gray-200">
-                {/* ------------Date Picker--------------- */}
-              </div>
+              <div className="my-2 p-1 md:flex mt-10 rounded">
+                  <p className="  text-black text-center mt-2 w-48">Check in:</p>
+                  <DatePicker
+                    selected={startDate}
+                    onChange={(date) => setStartDate(date)}
+                    dateFormat="dd/MM/yyyy"
+                    placeholderText="To"
+                    className="bg-grey-100 text-black border-black rounded-xl "
+                    
+                    
+                  />
+                  <p className="  text-black text-center mt-2 w-48">Check out:</p>
+                  <DatePicker
+                    selected={endDate}
+                    onChange={(date) => setendDate(date)}
+                    dateFormat="dd/MM/yyyy"
+                    placeholderText="To"
+                    className="bg-grey-100 text-black border-black rounded-xl "
+                    
+                    
+                  />
+                </div>
               <CheckOutComponent amount={9000} roomType={1} capacity={2} />
               <CheckOutComponent amount={8000} roomType={2} capacity={2} />
               <CheckOutComponent amount={7000} roomType={3} capacity={2} />
