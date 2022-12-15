@@ -6,9 +6,10 @@ import Hero2 from "../hero/Hero2";
 
 const Content = () => {
   return (
+    <div className="h-56 sm:h-64 xl:h-screen w-full  mt-16" style={{backgroundImage:"url(/jog.jpg"}}>
     <div className="h-56 sm:h-64 xl:h-screen w-full  mt-16">
-    <div>
-        <img src={jog} alt="..."/>
+        
+        
         
     </div>
     <BookingForm />

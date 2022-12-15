@@ -3,8 +3,13 @@ import Attractions from "../attraction/Attractions";
 import Features from "../features/Features";
 import Footer from "../footer/Footer";
 import Review from "../Review/Review";
-
+import { useNavigate, Routes, Route, Link } from "react-router-dom";
 const Hero2 = () => {
+  const navigate =useNavigate();
+  const navigateToBookingForm =() =>{
+    navigate('/BookingForm')
+  }
+
   return (
     <div className="absolute md:-mt-44 -mt-72 w-full px-6 mx-auto">
       <section className="mb-32">
@@ -30,16 +35,19 @@ const Hero2 = () => {
               <h1 className="text-3xl md:text-4xl text-center xl:text-7xl font-bold tracking-tight mb-4">
                 Welcome to Madhu Homestay{" "}
               </h1>
-              <p className="mb-10">The delicacy of the comfort rederined</p>
+              <p className="mb-10">The delicacy of the comfort redefined</p>
+              <button>
               <a
                 className="inline-block px-7 py-3 mb-2 md:mb-0 mr-0 md:mr-2 bg-red-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out"
                 data-mdb-ripple="true"
                 data-mdb-ripple-color="light"
                 href="#!"
                 role="button"
+                onClick={navigateToBookingForm}
               >
                 Book Now
               </a>
+              </button>
             </div>
           </div>
         </div>
