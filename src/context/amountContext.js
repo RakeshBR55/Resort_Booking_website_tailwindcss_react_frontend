@@ -10,18 +10,22 @@ const roomReducer = (state,action)=>{
 
     switch(action.type){
         case 'ADD_ROOM':
-            newState = {...state}
+            newState = [...state]
             roomType = action.room['roomType']
             roomCount = action.room['count'] + 1
-            newState[roomType]['selectedRoom'] = roomCount;
+            newState = newState.map( ele => {
+                return ele['roomType'] === roomType ? {...ele,roomsBooked:roomCount} : ele
+               
+            })
             break;
 
         case 'REMOVE_ROOM':
-            newState = {...state}
+            newState = [...state]
             roomType = action.room['roomType'];
             roomCount = action.room['count'] - 1;
-            newState[roomType]['selectedRoom'] = roomCount;
-
+            newState = newState.map( ele => {
+                return ele['roomType'] === roomType ? {...ele,roomsBooked:roomCount} : ele
+            })
             break;
         default:
             return state
@@ -32,22 +36,21 @@ const roomReducer = (state,action)=>{
 export const  AmountState = ({children})=>{
      
     const [amount, setAmount] = useState(0)
-
     //intial state for the useReducer hook
-    const initialRoomState = {
-        1:{
-            selectedRoom:0,
+    const initialRoomState = [
+        {   roomType:'Single Room',
+            roomsBooked:0,
             roomCost:800
         },
-        2:{
-            selectedRoom:0,
+        {   roomType:'Double Room',
+            roomsBooked:0,
             roomCost:900
         },
-        3:{
-            selectedRoom:0,
+        {   roomType:'Luxury Room',
+            roomsBooked:0,
             roomCost:1200
         }
-    }
+    ]
 
     //use Reducer to set the intial state
     const [roomState, dispatch] = useReducer(roomReducer, initialRoomState)

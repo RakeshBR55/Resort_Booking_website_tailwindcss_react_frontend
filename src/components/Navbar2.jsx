@@ -1,16 +1,21 @@
-import React, { useState } from "react";
+import React, { useState,useContext,useEffect} from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import { BsFillPersonPlusFill } from "react-icons/bs";
 import { AiOutlineLogin } from "react-icons/ai";
-import Content from "../Content/Content";
-
+import Content from "./Content";
+import { authContext } from "../context/authContext";
 const Navbar2 = () => {
   
   const [show, setShow] = useState(null);
   const [profile, setProfile] = useState(false);
-  // const [product, setProduct] = useState(false);
-  // const [deliverables, setDeliverables] = useState(false);
-  const token = localStorage.getItem("token");
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    window.location.reload();
+  };
+  const {decodedToken,isExpired} = useContext(authContext)
+
+  
   return (
     <>
       <div className="bg-transparent h-full w-full">
@@ -186,7 +191,7 @@ const Navbar2 = () => {
                       Gallery
                     </Link>
                   </li>
-                  {token ? (
+                  {decodedToken ? (
                     <>
                       <div
                       className="flex items-center relative"
@@ -238,9 +243,9 @@ const Navbar2 = () => {
                               <path d="M12 13.5a1.5 1.5 0 0 1 1 -1.5a2.6 2.6 0 1 0 -3 -4" />
                             </svg>
                             <span className="ml-2">
-                              <Link to="/" className="p-2">
+                              <button onClick={logout}>
                                 Logout
-                              </Link>
+                              </button>
                             </span>
                           </li>
                         </ul>
@@ -514,7 +519,7 @@ const Navbar2 = () => {
                       </li>
 
                       {/* Render Profile here */}
-                      {!token ? (
+                      {!decodedToken ? (
                         <>
                           <li className="text-gray-800 pt-8 cursor-pointer">
                             <div className="flex items-center justify-between">
@@ -583,9 +588,9 @@ const Navbar2 = () => {
                                       <path d="M12 13.5a1.5 1.5 0 0 1 1 -1.5a2.6 2.6 0 1 0 -3 -4" />
                                     </svg>
                                     <span className="ml-2">
-                                      <Link to="/" className="p-2">
+                                      <button onClick={logout}>
                                         Logout
-                                      </Link>
+                                      </button>
                                     </span>
                                   </li>
                                 </ul>

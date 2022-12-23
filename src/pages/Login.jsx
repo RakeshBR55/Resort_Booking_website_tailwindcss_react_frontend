@@ -28,7 +28,7 @@ const Login = () => {
     if (data.status === "ok") {
       localStorage.setItem("token", data.token);
       alert("Login successful");
-      navigate("/");
+      navigate('/')
     } else {
       alert("Please check your username and password or Invalid Credential");
     }
@@ -44,22 +44,24 @@ const Login = () => {
           <h1 className="mb-8 text-3xl text-green-600 text-center text- font-bold">
             Login
           </h1>
+          <p className="text-sm text-green-500 mb-2 ml-2">Email </p>
           <input
             type="text"
             className="block border border-grey-light w-full p-3 rounded mb-4"
             name="email"
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
-          required
+          <p className="text-sm text-green-500 mb-2 ml-2">Password </p>
           <input
             type="password"
             className="block border border-grey-light w-full p-3 rounded mb-4"
             name="password"
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
-          required
           <button
             type="submit"
             className="w-full text-center py-3 rounded bg-green-500 text-white hover:bg-yellow-800 focus:outline-none my-1"

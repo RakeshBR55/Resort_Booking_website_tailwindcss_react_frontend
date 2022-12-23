@@ -165,7 +165,7 @@ const Footer = () => {
     </div>
   </div>
   <div className="text-center p-6 bg-gray-200">
-    <span>© 2021 Copyright:</span>
+    <span>© 2022 Copyright:</span>
     <a className="text-gray-600 font-semibold" href="https://tailwind-elements.com/">Tailwind Elements</a>
   </div>
 </footer>
