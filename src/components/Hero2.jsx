@@ -11,10 +11,10 @@ const Hero2 = () => {
   }
 
   return (
-    <div className="absolute md:-mt-44 -mt-72 w-full px-6 mx-auto">
+    <div className="absolute md:-mt-44  -mt-72 w-full px-6 mx-auto">
       <section className="mb-32">
         <div
-          className="relative overflow-hidden mt-10 bg-no-repeat bg-cover"
+          className="relative flex overflow-hidden mt-10 bg-no-repeat bg-cover"
           style={{
             backgroundPosition: "50%",
             backgroundImage: "url(/map.png)",
@@ -52,7 +52,7 @@ const Hero2 = () => {
           </div>
         </div>
         <Features />
-        <h1 className='md:text-5xl text-xl font-Rubik text-center p-4 text-green-400'>Tourist places and Attractions</h1>
+        <h1 className='md:text-5xl text-xl font-Rubik text-center p-4 text-green-800'>Tourist places and Attractions</h1>
         <Attractions />
         
       </section>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useNavigate, Routes, Route, Link } from "react-router-dom";
+import { useNavigate, Routes, Route, } from "react-router-dom";
 import Checkout from "../../pages/roomSelection/Checkout";
 
 const BookingForm = () => {
