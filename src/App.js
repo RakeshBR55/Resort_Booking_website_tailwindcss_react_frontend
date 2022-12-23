@@ -29,10 +29,10 @@ function App() {
           <Routes>
             <Route path="signup" element={<Signup />} />
             <Route path="login" element={<Login />} />
+            <Route path="userprofile" element={<UserProfile />} />
             <Route path="/" element={<Home2 />}>
               <Route path="" element={<Content />} />
               <Route path="rooms" element={<Rooms />} />
-              <Route path="userprofile" element={<UserProfile />} />
               <Route path="checkout" element={<Checkout />} />
               <Route path="gallery" element={<Gallery />} />
               <Route path="contact" element={<Contact />} />
