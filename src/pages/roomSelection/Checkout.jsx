@@ -13,13 +13,13 @@ const Checkout = () => {
   console.log(endDate)
   const { roomState, amount } = useContext(AmountContext);
   function dayCount(startDate, endDate) {
-    var milliseconds1 = startDate.getTime();
-    var milliseconds2 = endDate.getTime();
+    const milliseconds1 = startDate.getTime();
+    const milliseconds2 = endDate.getTime();
     
     var differenceMs = milliseconds2 - milliseconds1;
     return Math.round(differenceMs/1000/60/60/24);
   }
-  var days = dayCount(startDate, endDate)
+  const days = dayCount(startDate, endDate)
   console.log(days)
 
   // above code with "days" is for no of days
