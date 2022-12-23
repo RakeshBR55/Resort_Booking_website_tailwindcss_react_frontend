@@ -1,16 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const DrawerComponent = ({ label, Icon }) => {
   return (
     <>
       <li>
-        <a
-          href="dashboard/users"
+        <Link
+          to={label === "Dashboard" ? "/dashboard" : `/dashboard/${label}`}
           className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
         >
           <Icon />
           <span className="ml-3">{label}</span>
-        </a>
+        </Link>
       </li>
     </>
   );

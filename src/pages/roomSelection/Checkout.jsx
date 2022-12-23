@@ -1,51 +1,53 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import Navbar2 from "../../components/navbar/Navbar2";
-import CheckOutComponent from "../../components/checkout/CheckOutComponent";
+import CheckOutComponent from "../../components/CheckOutComponent";
 import { AmountContext } from "../../context/amountContext";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const Checkout = () => {
-  const [startDate, setStartDate] = useState(new Date());
-  console.log(startDate)
-  const [endDate, setendDate] = useState(new Date());
-  console.log(endDate)
-  const { roomState, amount } = useContext(AmountContext);
+  //Function to calculate days between two dates
   function dayCount(startDate, endDate) {
     const milliseconds1 = startDate.getTime();
     const milliseconds2 = endDate.getTime();
-    
-    var differenceMs = milliseconds2 - milliseconds1;
-    return Math.round(differenceMs/1000/60/60/24);
+    const differenceMs = milliseconds2 - milliseconds1;
+    return Math.round(differenceMs / 1000 / 60 / 60 / 24);
   }
-  const days = dayCount(startDate, endDate)
-  console.log(days)
 
-  // above code with "days" is for no of days
-  
-  console.log(roomState);
   const token = localStorage.getItem("token"); //Token for user Auth
   const __DEV__ = document.domain === "localhost";
 
+  const { roomState, amount } = useContext(AmountContext);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setendDate] = useState(new Date());
+
+  const roomDetails = roomState.filter((ele) => {
+    return ele["roomsBooked"] > 0
+      ? { roomType: ele["roomType"], roomsBooked: ele["roomsBooked"] }
+      : null;
+  });
+  console.log(roomDetails);
+  const days = dayCount(startDate, endDate);
+
   async function displayRazorpay() {
-    const data = await fetch("http://127.0.0.1:8800/payment", {
+    const response = await fetch("http://127.0.0.1:8800/api/payment/booking", {
       method: "POST",
       headers: {
         "x-access-token": localStorage.getItem("token"),
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ amount }),
-    }).then((t) => t.json());
+    });
+    const resData = await response.json(); //Data from server for payment
 
     const options = {
       key: __DEV__ ? process.env.RAZOR_PAY_ID : "PRODUCTION_KEY",
-      amount: data.amount.toString(),
-      currency: data.currency,
+      amount: resData.amount.toString(),
+      currency: resData.currency,
       name: "Madhu Home Stay",
       description:
         "Thank you for booking, your room will be booked after the payment",
-      order_id: data.id,
+      order_id: resData.id,
 
       //Handler function for payment verification
       handler: async function (response) {
@@ -53,11 +55,13 @@ const Checkout = () => {
           razorpayPaymentId: response.razorpay_payment_id,
           razropayOrderId: response.razorpay_order_id,
           razorpaySignature: response.razorpay_signature,
-          bookingDetails: roomState,
+          roomDetails: roomDetails,
+          checkIn: startDate,
+          checkOut: endDate,
         };
 
         //Payment Verification
-        const verify = await fetch("http://127.0.0.1:8800/verification", {
+        const verify = await fetch("http://127.0.0.1:8800/api/payment/verification", {
           method: "POST",
           headers: {
             "x-access-token": token,
@@ -88,7 +92,6 @@ const Checkout = () => {
   }
   return (
     <>
-      <Navbar2 />
       <div
         className="w-full mt-24 mx-auto h-full bg-black bg-opacity-90 top-0  sticky-0"
         id="chec-div"
@@ -131,30 +134,26 @@ const Checkout = () => {
               </p>
 
               <div className="my-2 p-1 md:flex mt-10 rounded">
-                  <p className="  text-black text-center mt-2 w-48">Check in:</p>
-                  <DatePicker
-                    selected={startDate}
-                    onChange={(date) => setStartDate(date)}
-                    dateFormat="dd/MM/yyyy"
-                    placeholderText="To"
-                    className="bg-grey-100 text-black border-black rounded-xl "
-                    
-                    
-                  />
-                  <p className="  text-black text-center mt-2 w-48">Check out:</p>
-                  <DatePicker
-                    selected={endDate}
-                    onChange={(date) => setendDate(date)}
-                    dateFormat="dd/MM/yyyy"
-                    placeholderText="To"
-                    className="bg-grey-100 text-black border-black rounded-xl "
-                    
-                    
-                  />
-                </div>
-              <CheckOutComponent amount={9000} roomType={1} capacity={2} />
-              <CheckOutComponent amount={8000} roomType={2} capacity={2} />
-              <CheckOutComponent amount={7000} roomType={3} capacity={2} />
+                <p className="  text-black pl-2 mt-2 w-48">Check in:</p>
+                <DatePicker
+                  selected={startDate}
+                  onChange={(date) => setStartDate(date)}
+                  dateFormat="dd/MM/yyyy"
+                  placeholderText="To"
+                  className="bg-grey-100 text-black border-black rounded-xl "
+                />
+                <p className="  text-black pl-2 mt-2 w-48">Check out:</p>
+                <DatePicker
+                  selected={endDate}
+                  onChange={(date) => setendDate(date)}
+                  dateFormat="dd/MM/yyyy"
+                  placeholderText="To"
+                  className="bg-grey-100 text-black border-black rounded-xl "
+                />
+              </div>
+              <CheckOutComponent amount={9000} roomType="Single Room" capacity={2} />
+              <CheckOutComponent amount={8000} roomType="Double Room" capacity={2} />
+              <CheckOutComponent amount={7000} roomType="Luxuary Room" capacity={2} />
             </div>
 
             <div className=" md:w-1/2  w-full bg-gray-100 h-full">

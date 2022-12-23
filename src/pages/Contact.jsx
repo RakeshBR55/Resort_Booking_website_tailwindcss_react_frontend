@@ -1,6 +1,21 @@
-import React from "react";
+import React,{useState} from "react";
 
 const Contact = () => {
+  const [name, setName] = useState("") ;
+  const [email, setEmail] = useState("") ;
+  const [message, setMessage] = useState("") ;
+  const [phone, setPhone] = useState("") ;
+
+  const handleMessage = (e) => {
+    e.preventDefault();
+    console.log(name,email,message,phone);
+    setEmail("");
+    setName("");
+    setMessage("");
+    setPhone("");  
+    alert('Message Sent')
+  }
+
   return (
     <>
       <div className="py-4 lg:py-8 mt-28  relative">
@@ -63,16 +78,17 @@ const Contact = () => {
                 <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-wider text-indigo-700">
                   Let’s Talk
                 </h1>
-                <div className="w-full 2xl:w-8/12 mt-3">
+                <form onSubmit={handleMessage} className="w-full 2xl:w-8/12 mt-3">
                   <h2 className="text-gray-800 text-base md:text-lg leading-8 tracking-wider">
-                    For enquiries, please email us using the form below
+                    For enquiries, please contact us using the form below
                   </h2>
                   <div className="mt-4 md:mt-8">
                     <p className="text-gray-800 text-base font-medium">Name</p>
                     <input
                       className="mt-3 text-base border-2 w-11/12 lg:w-full xl:w-10/12 hover:border-indigo-600 focus:border-indigo-600 focus:outline-none border-black py-5 pl-4 text-gray-800"
-                      type="text"  
+                      type="text"
                       placeholder="Justin Timberlake"
+                      onChange={e => setName(e.target.value)}
                     />
                   </div>
                   <div className="mt-4 md:mt-8">
@@ -82,7 +98,8 @@ const Contact = () => {
                     <input
                       className="mt-3 text-base border-2 w-11/12 lg:w-full xl:w-10/12 hover:border-indigo-600 focus:border-indigo-600 focus:outline-none border-black py-5 pl-4 text-gray-800"
                       type="tel"
-                      placeholder="Justin Timberlake"
+                      placeholder="9113021966"
+                      onChange={e => setPhone(e.target.value)}
                     />
                   </div>
                   <div className="mt-4 md:mt-8">
@@ -92,7 +109,8 @@ const Contact = () => {
                     <input
                       className="mt-3 text-base border-2 w-11/12 lg:w-full xl:w-10/12 hover:border-indigo-600 focus:border-indigo-600 focus:outline-none border-black py-5 pl-4 text-gray-800"
                       type="email"
-                      placeholder="example@mail.com"
+                      placeholder="justin.timberlake@gmail.com"
+                      onChange={e => setEmail(e.target.value)}
                     />
                   </div>
                   <div className="mt-4 md:mt-8">
@@ -104,6 +122,7 @@ const Contact = () => {
                       type="text"
                       placeholder="Write us something..."
                       defaultValue={""}
+                      onChange={e => setMessage(e.target.value)}
                     />
                   </div>
                   <div className="py-5">
@@ -111,7 +130,7 @@ const Contact = () => {
                       Send
                     </button>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>

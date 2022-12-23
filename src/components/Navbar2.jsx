@@ -1,14 +1,21 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState,useContext,useEffect} from "react";
+import { Routes, Route, Link } from "react-router-dom";
 import { BsFillPersonPlusFill } from "react-icons/bs";
 import { AiOutlineLogin } from "react-icons/ai";
-
+import Content from "./Content";
+import { authContext } from "../context/authContext";
 const Navbar2 = () => {
+  
   const [show, setShow] = useState(null);
   const [profile, setProfile] = useState(false);
-  // const [product, setProduct] = useState(false);
-  // const [deliverables, setDeliverables] = useState(false);
-  const token = localStorage.getItem("token");
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    window.location.reload();
+  };
+  const {decodedToken,isExpired} = useContext(authContext)
+
+  
   return (
     <>
       <div className="bg-transparent h-full w-full">
@@ -38,7 +45,9 @@ const Navbar2 = () => {
                       <line x1={4} y1={16} x2={20} y2={16} />
                     </svg>
                   </div>
-                  <div className="hidden close-m-menu text-gray-700">
+                  <div
+                    className="hidden close-m-menu text-gray-700"
+                  >
                     <svg
                       aria-label="Close"
                       xmlns="http://www.w3.org/2000/svg"
@@ -88,7 +97,10 @@ const Navbar2 = () => {
               </div>
               <div className="flex">
                 <div className="hidden xl:flex md:mr-6 xl:mr-16">
-                  <li className="flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out">
+                  <li
+                    
+                    className="flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out"
+                  >
                     <span className="mr-2">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +116,9 @@ const Navbar2 = () => {
                       Home
                     </Link>
                   </li>
-                  <li className="flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out">
+                  <li
+                    className="flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out"
+                  >
                     <span className="mr-2">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -126,7 +140,9 @@ const Navbar2 = () => {
                       About
                     </Link>
                   </li>
-                  <li className="flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out">
+                  <li
+                    className="flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out"
+                  >
                     <span className="mr-2">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -148,7 +164,9 @@ const Navbar2 = () => {
                       Contact
                     </Link>
                   </li>
-                  <li className="flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out">
+                  <li
+                    className="flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out"
+                  >
                     <span className="mr-2">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -173,43 +191,19 @@ const Navbar2 = () => {
                       Gallery
                     </Link>
                   </li>
-                  {token ? (
+                  {decodedToken ? (
                     <>
                       <div
-                        className="flex items-center relative"
-                        onClick={() => setProfile(!profile)}
-                      >
-                        {profile && (
-                          <ul className="p-2 w-40 border-r bg-white absolute rounded right-0 shadow top-0 mt-16 ">
-                            <li className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
-                              <div className="flex items-center">
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  className="icon icon-tabler icon-tabler-user"
-                                  width={20}
-                                  height={20}
-                                  viewBox="0 0 24 24"
-                                  strokeWidth="1.5"
-                                  stroke="currentColor"
-                                  fill="none"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                >
-                                  <path stroke="none" d="M0 0h24v24H0z" />
-                                  <circle cx={12} cy={7} r={4} />
-                                  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                                </svg>
-                                <span className="ml-2">
-                                  <Link to="/userprofile" className="p-2">
-                                    My profile
-                                  </Link>
-                                </span>
-                              </div>
-                            </li>
-                            <li className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex items-center">
+                      className="flex items-center relative"
+                      onClick={() => setProfile(!profile)}
+                    >
+                      {profile && (
+                        <ul className="p-2 w-40 border-r bg-white absolute rounded right-0 shadow top-0 mt-16 ">
+                          <li className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
+                            <div className="flex items-center">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                className="icon icon-tabler icon-tabler-help"
+                                className="icon icon-tabler icon-tabler-user"
                                 width={20}
                                 height={20}
                                 viewBox="0 0 24 24"
@@ -220,43 +214,67 @@ const Navbar2 = () => {
                                 strokeLinejoin="round"
                               >
                                 <path stroke="none" d="M0 0h24v24H0z" />
-                                <circle cx={12} cy={12} r={9} />
-                                <line x1={12} y1={17} x2={12} y2="17.01" />
-                                <path d="M12 13.5a1.5 1.5 0 0 1 1 -1.5a2.6 2.6 0 1 0 -3 -4" />
+                                <circle cx={12} cy={7} r={4} />
+                                <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
                               </svg>
                               <span className="ml-2">
-                                <Link to="/" className="p-2">
-                                  Logout
+                                <Link to="/userprofile" className="p-2">
+                                  My profile
                                 </Link>
                               </span>
-                            </li>
-                          </ul>
-                        )}
-                        <div className="cursor-pointer flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out">
-                          <img
-                            className="rounded-full h-10 w-10 object-cover"
-                            src="https://tuk-cdn.s3.amazonaws.com/assets/components/horizontal_navigation/hn_2.png"
-                            alt="logo"
-                          />
-                        </div>
-                        <div className="ml-2 text-gray-600">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="icon icon-tabler icon-tabler-chevron-down cursor-pointer"
-                            width={20}
-                            height={20}
-                            viewBox="0 0 24 24"
-                            strokeWidth="1.5"
-                            stroke="currentColor"
-                            fill="none"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          >
-                            <path stroke="none" d="M0 0h24v24H0z" />
-                            <polyline points="6 9 12 15 18 9" />
-                          </svg>
-                        </div>
+                            </div>
+                          </li>
+                          <li className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex items-center">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="icon icon-tabler icon-tabler-help"
+                              width={20}
+                              height={20}
+                              viewBox="0 0 24 24"
+                              strokeWidth="1.5"
+                              stroke="currentColor"
+                              fill="none"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            >
+                              <path stroke="none" d="M0 0h24v24H0z" />
+                              <circle cx={12} cy={12} r={9} />
+                              <line x1={12} y1={17} x2={12} y2="17.01" />
+                              <path d="M12 13.5a1.5 1.5 0 0 1 1 -1.5a2.6 2.6 0 1 0 -3 -4" />
+                            </svg>
+                            <span className="ml-2">
+                              <button onClick={logout}>
+                                Logout
+                              </button>
+                            </span>
+                          </li>
+                        </ul>
+                      )}
+                      <div className="cursor-pointer flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out">
+                        <img
+                          className="rounded-full h-10 w-10 object-cover"
+                          src="https://tuk-cdn.s3.amazonaws.com/assets/components/horizontal_navigation/hn_2.png"
+                          alt="logo"
+                        />
                       </div>
+                      <div className="ml-2 text-gray-600">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="icon icon-tabler icon-tabler-chevron-down cursor-pointer"
+                          width={20}
+                          height={20}
+                          viewBox="0 0 24 24"
+                          strokeWidth="1.5"
+                          stroke="currentColor"
+                          fill="none"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path stroke="none" d="M0 0h24v24H0z" />
+                          <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                      </div>
+                    </div>
                     </>
                   ) : (
                     <>
@@ -269,7 +287,9 @@ const Navbar2 = () => {
                           Sign Up
                         </Link>
                       </li>
-                      <li className="flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out">
+                      <li
+                        className="flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out"
+                      >
                         <AiOutlineLogin />
                         <Link to="/login" className="p-2">
                           Login
@@ -279,7 +299,9 @@ const Navbar2 = () => {
                   )}
                 </div>
                 <div className="hidden xl:flex items-center">
-                  <div className="ml-6 relative"></div>
+                  <div className="ml-6 relative">
+                    
+                  </div>
                 </div>
               </div>
             </div>
@@ -309,31 +331,37 @@ const Navbar2 = () => {
                 id="menu"
                 className="text-gray-800"
                 onClick={() => setShow(!show)}
+                
               >
                 {show ? (
                   ""
                 ) : (
                   <>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="icon icon-tabler icon-tabler-menu-2"
-                      width={24}
-                      height={24}
-                      viewBox="0 0 24 24"
-                      strokeWidth="1.5"
-                      stroke="currentColor"
-                      fill="none"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <line x1={4} y1={6} x2={20} y2={6} />
-                      <line x1={4} y1={12} x2={20} y2={12} />
-                      <line x1={4} y1={18} x2={20} y2={18} />
-                    </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="icon icon-tabler icon-tabler-menu-2"
+                    width={24}
+                    height={24}
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <line x1={4} y1={6} x2={20} y2={6} />
+                    <line x1={4} y1={12} x2={20} y2={12} />
+                    <line x1={4} y1={18} x2={20} y2={18} />
+                  </svg>
+                  
                   </>
                 )}
               </div>
+              <Routes>
+          <Route path="/Content" element={<Content />} />
+          
+        </Routes>
             </div>
           </div>
 
@@ -341,15 +369,15 @@ const Navbar2 = () => {
           <div
             className={
               show
-                ? "w-full xl:hidden h-full fixed  z-40  transform  translate-x-0 "
-                : "   w-full xl:hidden h-full absolute z-40 transform -translate-x-full"
+                ? "w-full xl:hidden h-full absolute z-40  transform  translate-x-0 "
+                : "   w-full xl:hidden h-full absolute z-40  transform -translate-x-full"
             }
           >
             <div
-              className="bg-gray-800  opacity-50 w-full h-full"
+              className="bg-gray-800 opacity-50 w-full h-full"
               onClick={() => setShow(!show)}
             />
-            <div className="w-64 fixed overflow-y-auto z-40 top-0 bg-white shadow h-full flex-col justify-between xl:hidden pb-4">
+            <div className="w-64 fixed overflow-y-auto  bg-white shadow h-full flex-col justify-between xl:hidden pb-4 transition duration-150 ease-in-out">
               <div className="px-6 h-full">
                 <div className="flex flex-col justify-between h-full w-full">
                   <div>
@@ -491,7 +519,7 @@ const Navbar2 = () => {
                       </li>
 
                       {/* Render Profile here */}
-                      {!token ? (
+                      {!decodedToken ? (
                         <>
                           <li className="text-gray-800 pt-8 cursor-pointer">
                             <div className="flex items-center justify-between">
@@ -560,9 +588,9 @@ const Navbar2 = () => {
                                       <path d="M12 13.5a1.5 1.5 0 0 1 1 -1.5a2.6 2.6 0 1 0 -3 -4" />
                                     </svg>
                                     <span className="ml-2">
-                                      <Link to="/" className="p-2">
+                                      <button onClick={logout}>
                                         Logout
-                                      </Link>
+                                      </button>
                                     </span>
                                   </li>
                                 </ul>

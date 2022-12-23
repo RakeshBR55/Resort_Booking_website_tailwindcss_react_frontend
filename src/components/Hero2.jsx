@@ -1,8 +1,8 @@
 import React from "react";
-import Attractions from "../attraction/Attractions";
-import Features from "../features/Features";
-import Footer from "../footer/Footer";
-import Review from "../Review/Review";
+import Attractions from "./attraction/Attractions";
+import Features from "./Features";
+import Footer from "./Footer";
+import Review from "./Review";
 import { useNavigate, Routes, Route, Link } from "react-router-dom";
 const Hero2 = () => {
   const navigate =useNavigate();

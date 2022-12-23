@@ -21,3 +21,4 @@ const Content = () => {
 export default Content;
 
 // style={{background: "url(/fog2.png)",backgroundRepeat:"repeat-x",backgroundPosition:"center", animation: "60s", animationTimingFunction: "linear", animationIterationCount:"infinite"}}
+

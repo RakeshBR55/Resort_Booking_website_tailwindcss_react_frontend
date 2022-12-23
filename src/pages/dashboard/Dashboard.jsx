@@ -3,11 +3,11 @@ import Sidebar from "./Sidebar";
 
 import Menu from "../../components/Dashboard/Menu";
 import {sideBarContext} from "../../context/sideBarContext";
+import { authContext } from "../../context/authContext";
 import { Outlet } from "react-router-dom";
 
 const Dashboard = () => {
-  const token = localStorage.getItem('token');
-  console.log(token);
+  // const { auth } = useContext(authContext);
   const show = useContext(sideBarContext);
 
   return (
@@ -18,8 +18,8 @@ const Dashboard = () => {
       <div className="absolute w-full lg:w-[calc(100%-16rem)] top-0 left-0 lg:left-64 px-5 pb-10 min-h-screen bg-blue-100 lg:pt-10">
         <Menu />
         <Outlet/>
-      </div>
     </div>
+      </div>
   );
 };
 
