@@ -14,7 +14,7 @@ import Users from "./pages/dashboard/Users";
 import DashHero from "./pages/dashboard/DashHero";
 import DashRooms from "./pages/dashboard/Rooms";
 import Contact from "./pages/Contact";
-import Content from "./components/Content";
+import Content from "./components/Content/Content";
 import RecentBooking from "./pages/dashboard/RecentBooking";
 
 import { AmountState } from "./context/amountContext";
