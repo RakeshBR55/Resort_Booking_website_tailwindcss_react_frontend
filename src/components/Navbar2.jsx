@@ -4,6 +4,7 @@ import { BsFillPersonPlusFill } from "react-icons/bs";
 import { AiOutlineLogin } from "react-icons/ai";
 import Content from "./Content";
 import { authContext } from "../context/authContext";
+import { decodeToken } from "react-jwt";
 const Navbar2 = () => {
   
   const [show, setShow] = useState(null);
@@ -13,8 +14,8 @@ const Navbar2 = () => {
     localStorage.removeItem("token");
     window.location.reload();
   };
-  const {decodedToken,isExpired} = useContext(authContext)
-
+  const {decodedToken,isMyTokenExpired} = useContext(authContext)
+  console.log(decodedToken)
   
   return (
     <>

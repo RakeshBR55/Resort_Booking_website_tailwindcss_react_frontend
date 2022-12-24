@@ -17,14 +17,13 @@ const RecentBooking = () => {
                 <span>Room</span>
                 <span>Booked By</span>
             </div>
-            {
-              data.map( item => {
+            { loading || data.length === 0 ? <div className='flex justify-center items-center h-screen'>Loading</div> :
+              data.map( (item,index)=> {
                 return (
-                  <BookingCard checkIn={item.checkIn.substring(0,10)} checkOut={item.checkOut.substring(0,10)} roomDetails={item.roomDetails} name={item.userId['fullName']} email={item.userId['email']} />
+                  <BookingCard key={index} checkIn={item.checkIn.substring(0,10)} checkOut={item.checkOut.substring(0,10)} roomDetails={item.roomDetails} name={item['userId']['fullName']} email={item['userId']['email']}/>
                 )
               })
             }
-
         </div>
     </div>
   )

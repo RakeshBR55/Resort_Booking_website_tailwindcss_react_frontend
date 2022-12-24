@@ -13,17 +13,16 @@ const DashHero = () => {
         <span className="text-xl">Welcome to Dashboard</span>
       </div>
       <div className="space-y-2 md:space-y-0 flex flex-wrap justify-center lg:justify-around items-center">
-        <DashCard />
-        <DashCard />
-        <DashCard />
-        <DashCard />
+        <DashCard cardType={'Visitors'} count={90}/>
+        <DashCard cardType={'Bookings'} count={50}/>
+        <DashCard cardType={'Total Revenue'} count={'80,000/-'}/>
       </div>
       <div className="flex w-full flex-wrap justify-between">
         <div className="space-y-10 w-80 bg-gray-50 h-fulll">
           <h2 className="text-2xl text-center">Total Bookings</h2>
           <PieCharts />
         </div>
-        <div className="w-ful lg:w-[calc(100%-24rem)] h-96 bg-white">
+        <div className="w-full lg:w-[calc(100%-24rem)] h-96 bg-white flex justify-center items-center">
           <Chart />
         </div>
       </div>

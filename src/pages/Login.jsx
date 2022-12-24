@@ -1,11 +1,12 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState,useContext } from "react";
+import {authContext} from "../context/authContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const {setDecodedToken} = useContext(authContext);
   const navigate = useNavigate();
 
   async function loginUser(event) {
@@ -27,6 +28,7 @@ const Login = () => {
     console.log(data);
     if (data.status === "ok") {
       localStorage.setItem("token", data.token);
+      setDecodedToken(data.token);
       alert("Login successful");
       navigate('/')
     } else {

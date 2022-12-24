@@ -1,19 +1,15 @@
-import { React, useContext, useState, useEffect} from "react";
+import { React, useContext, useState } from "react";
 import roomImg from "../assets/room1.jpg";
-import { AmountContext } from "../context/amountContext";
-import { authContext } from "../context/authContext";
-import { useNavigate } from "react-router-dom";
+import { CheckOutContext } from "../context/amountContext";
 
 const CheckOutComponent = ({ width = "w-1/4", roomType, capacity }) => {
-  const navigate = useNavigate();
-  const { setAmount, amount, roomState, dispatch} = useContext(AmountContext);
-  const {isExpired} = useContext(authContext);
+  const { setAmount, amount, roomState, dispatch } = useContext(CheckOutContext);
   const [roomCounts, setroomCounts] = useState(0);
 
-  const room = roomState.filter(ele => {
-    return ele['roomType'] === roomType ? ele['roomCost'] : null
-  })
-  const roomCost = room[0]['roomCost']
+  const room = roomState.filter((ele) => {
+    return ele["roomType"] === roomType ? ele["roomCost"] : null;
+  });
+  const roomCost = room[0]["roomCost"];
 
   const incrementer = (e) => {
     e.preventDefault();
@@ -32,21 +28,13 @@ const CheckOutComponent = ({ width = "w-1/4", roomType, capacity }) => {
     e.preventDefault();
     if (roomCounts === 0) return;
     setroomCounts(roomCounts - 1);
+
     dispatch({
       type: "REMOVE_ROOM",
       room: { roomType: roomType, count: roomCounts },
     });
     setAmount(amount - roomCost);
   };
-
-
-  useEffect(() => {
-    if(isExpired){
-      alert('Session expired, please login again')
-      localStorage.clear('token')
-      navigate('/login')
-    }
-  });
 
   return (
     <div className="md:flex items-center mt-14 py-8 border-t border-gray-200 lg:space-x-5 space-y-5">

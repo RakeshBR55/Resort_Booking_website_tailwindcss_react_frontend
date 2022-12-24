@@ -17,7 +17,7 @@ import Contact from "./pages/Contact";
 import Content from "./components/Content";
 import RecentBooking from "./pages/dashboard/RecentBooking";
 
-import { AmountState } from "./context/amountContext";
+import { CheckOutState } from "./context/amountContext";
 import { SideBarState } from "./context/sideBarContext";
 import { AuthState } from "./context/authContext";
 function App() {
@@ -25,7 +25,7 @@ function App() {
     <BrowserRouter>
       <AuthState>
         <SideBarState>
-          <AmountState>
+          <CheckOutState>
             <Routes>
               <Route path="signup" element={<Signup />} />
               <Route path="login" element={<Login />} />
@@ -44,7 +44,7 @@ function App() {
                 <Route path="Bookings" element={<RecentBooking />} />
               </Route>
             </Routes>
-          </AmountState>
+          </CheckOutState>
         </SideBarState>
       </AuthState>
     </BrowserRouter>

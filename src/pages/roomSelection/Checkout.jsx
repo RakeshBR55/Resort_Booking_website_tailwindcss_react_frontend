@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState , useEffect } from "react";
+import { Link , useNavigate } from "react-router-dom";
 import CheckOutComponent from "../../components/CheckOutComponent";
-import { AmountContext } from "../../context/amountContext";
+import { CheckOutContext } from "../../context/amountContext";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import {authContext} from '../../context/authContext';
 const Checkout = () => {
   //Function to calculate days between two dates
   function dayCount(startDate, endDate) {
@@ -17,7 +17,7 @@ const Checkout = () => {
   const token = localStorage.getItem("token"); //Token for user Auth
   const __DEV__ = document.domain === "localhost";
 
-  const { roomState, amount } = useContext(AmountContext);
+  const { roomState, amount } = useContext(CheckOutContext);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setendDate] = useState(new Date());
 
@@ -30,6 +30,7 @@ const Checkout = () => {
   const days = dayCount(startDate, endDate);
 
   async function displayRazorpay() {
+
     const response = await fetch("http://127.0.0.1:8800/api/payment/booking", {
       method: "POST",
       headers: {
@@ -51,6 +52,7 @@ const Checkout = () => {
 
       //Handler function for payment verification
       handler: async function (response) {
+
         const data = {
           razorpayPaymentId: response.razorpay_payment_id,
           razropayOrderId: response.razorpay_order_id,
@@ -90,6 +92,17 @@ const Checkout = () => {
     const razorPay = new window.Razorpay(options);
     razorPay.open();
   }
+
+  const navigate = useNavigate()
+  const {isExpired} = useContext(authContext)
+  useEffect(() => {
+    if(isExpired){
+      alert('Session expired, please login again')
+      localStorage.clear('token')
+      navigate('/login')
+    }
+  });
+
   return (
     <>
       <div

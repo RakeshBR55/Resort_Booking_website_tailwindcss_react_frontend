@@ -1,6 +1,6 @@
 import { createContext,useState,useReducer} from "react";
 
-export const  AmountContext = createContext();
+export const  CheckOutContext = createContext();
 
 //Reducer function 
 const roomReducer = (state,action)=>{
@@ -33,9 +33,12 @@ const roomReducer = (state,action)=>{
     return newState;
 }
 
-export const  AmountState = ({children})=>{
+export const  CheckOutState = ({children})=>{
      
     const [amount, setAmount] = useState(0)
+    const [checkIn, setCheckIn] = useState(new Date());
+    const [checkOut, setCheckOut] = useState(new Date());
+
     //intial state for the useReducer hook
     const initialRoomState = [
         {   roomType:'Single Room',
@@ -56,8 +59,8 @@ export const  AmountState = ({children})=>{
     const [roomState, dispatch] = useReducer(roomReducer, initialRoomState)
 
     return (
-        <AmountContext.Provider value={{amount,setAmount,roomState,dispatch}}>
+        <CheckOutContext.Provider value={{amount,setAmount,checkIn,setCheckIn,checkOut,setCheckOut,roomState,dispatch}}>
             {children}
-        </AmountContext.Provider>
+        </CheckOutContext.Provider>
     )
 } 
