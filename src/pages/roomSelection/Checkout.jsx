@@ -26,7 +26,7 @@ const Checkout = () => {
       ? { roomType: ele["roomType"], roomsBooked: ele["roomsBooked"] }
       : null;
   });
-  console.log(roomDetails);
+  
   const days = dayCount(startDate, endDate);
 
   async function displayRazorpay() {
@@ -153,7 +153,7 @@ const Checkout = () => {
               </div>
               <CheckOutComponent amount={9000} roomType="Single Room" capacity={2} />
               <CheckOutComponent amount={8000} roomType="Double Room" capacity={2} />
-              <CheckOutComponent amount={7000} roomType="Luxuary Room" capacity={2} />
+              <CheckOutComponent amount={7000} roomType="Luxury Room" capacity={2} />
             </div>
 
             <div className=" md:w-1/2  w-full bg-gray-100 h-full">
@@ -167,14 +167,14 @@ const Checkout = () => {
                       Subtotal
                     </p>
                     <p className="text-base leading-none text-gray-800">
-                      $9,000
+                      {amount}
                     </p>
                   </div>
                   <div className="flex items-center justify-between pt-5">
                     <p className="text-base leading-none text-gray-800">
-                      Shipping
+                      Days
                     </p>
-                    <p className="text-base leading-none text-gray-800">$30</p>
+                    <p className="text-base leading-none text-gray-800">{days}</p>
                   </div>
                   <div className="flex items-center justify-between pt-5">
                     <p className="text-base leading-none text-gray-800">Tax</p>
@@ -187,7 +187,7 @@ const Checkout = () => {
                       Total
                     </p>
                     <p className="text-2xl font-bold leading-normal text-right text-gray-800">
-                      {amount}
+                      {amount*days}
                     </p>
                   </div>
                   <button

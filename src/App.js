@@ -19,34 +19,34 @@ import RecentBooking from "./pages/dashboard/RecentBooking";
 
 import { AmountState } from "./context/amountContext";
 import { SideBarState } from "./context/sideBarContext";
-import {AuthState} from './context/authContext';
+import { AuthState } from "./context/authContext";
 function App() {
   return (
     <BrowserRouter>
-    <AuthState>
-      <SideBarState>
-        <AmountState>
-          <Routes>
-            <Route path="signup" element={<Signup />} />
-            <Route path="login" element={<Login />} />
-            <Route path="userprofile" element={<UserProfile />} />
-            <Route path="/" element={<Home2 />}>
-              <Route path="" element={<Content />} />
-              <Route path="rooms" element={<Rooms />} />
-              <Route path="checkout" element={<Checkout />} />
-              <Route path="gallery" element={<Gallery />} />
-              <Route path="contact" element={<Contact />} />
-            </Route>
-            <Route path="/dashboard" element={<Dashboard />}>
-              <Route path="" element={<DashHero />} />
-              <Route path="Users" element={<Users />} />
-              <Route path="Rooms" element={<DashRooms />} />
-              <Route path="Bookings" element={<RecentBooking />} />
-            </Route>
-          </Routes>
-        </AmountState>
-      </SideBarState>
-    </AuthState>
+      <AuthState>
+        <SideBarState>
+          <AmountState>
+            <Routes>
+              <Route path="signup" element={<Signup />} />
+              <Route path="login" element={<Login />} />
+              <Route path="/" element={<Home2 />}>
+                <Route path="" element={<Content />} />
+                <Route path="rooms" element={<Rooms />} />
+                <Route path="checkout" element={<Checkout />} />
+                <Route path="gallery" element={<Gallery />} />
+                <Route path="contact" element={<Contact />} />
+                <Route path="userprofile" element={<UserProfile />} />
+              </Route>
+              <Route path="/dashboard" element={<Dashboard />}>
+                <Route path="" element={<DashHero />} />
+                <Route path="Users" element={<Users />} />
+                <Route path="Rooms" element={<DashRooms />} />
+                <Route path="Bookings" element={<RecentBooking />} />
+              </Route>
+            </Routes>
+          </AmountState>
+        </SideBarState>
+      </AuthState>
     </BrowserRouter>
   );
 }

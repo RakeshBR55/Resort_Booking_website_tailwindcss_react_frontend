@@ -1,13 +1,27 @@
 import React from "react";
 
-const BookingCard = ({ orderId, date,rooms,amount }) => {
+const BookingCard = ({ checkIn,checkOut,roomDetails=[],name="",email="" }) => {
   return (
     <div>
-      <ul className="flex justify-between border-b-[1px] flex-wrap">
-        <li>Date</li>
-        <li>Payment Status</li>
-        <li>Rooms</li>
-      </ul>
+      <div className="flex flex-col lg:flex-row justify-between border-b-[2px] flex-wrap space-y-5 lg:space-y-0">
+        <div className="flex flex-wrap flex-col">{checkIn}<span className="px-3">to</span>{checkOut}</div>
+        <div>
+          {
+            roomDetails.map( item => {
+              return (
+                <div className="space-x-2">
+                  <span>{item.roomType}</span>
+                  <span>{item.roomsBooked}</span>
+                </div>
+              )
+            })
+          }
+        </div>
+        <div className="flex flex-col flex-wrap">
+          <span>{name}</span>
+          <span>{email}</span>
+        </div>
+      </div>
     </div>
   );
 };

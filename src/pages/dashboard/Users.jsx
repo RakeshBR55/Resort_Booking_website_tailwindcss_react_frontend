@@ -1,7 +1,9 @@
 import {React} from 'react'
 import UsersCard from '../../components/Dashboard/UsersCard';
+import useFetch from '../../hooks/useFetch'
 
 const Users = () => {
+
   return (
     <div className='flex justify-center items-center w-full bg-gray-50 shadow-xl rounded-md flex-wrap p-5 space-y-5'>
         <div className='w-full flex justify-between'>

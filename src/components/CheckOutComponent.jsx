@@ -1,10 +1,19 @@
-import { React, useContext, useState } from "react";
+import { React, useContext, useState, useEffect} from "react";
 import roomImg from "../assets/room1.jpg";
 import { AmountContext } from "../context/amountContext";
+import { authContext } from "../context/authContext";
+import { useNavigate } from "react-router-dom";
 
 const CheckOutComponent = ({ width = "w-1/4", roomType, capacity }) => {
-  const { setAmount, amount, dispatch} = useContext(AmountContext);
+  const navigate = useNavigate();
+  const { setAmount, amount, roomState, dispatch} = useContext(AmountContext);
+  const {isExpired} = useContext(authContext);
   const [roomCounts, setroomCounts] = useState(0);
+
+  const room = roomState.filter(ele => {
+    return ele['roomType'] === roomType ? ele['roomCost'] : null
+  })
+  const roomCost = room[0]['roomCost']
 
   const incrementer = (e) => {
     e.preventDefault();
@@ -16,7 +25,7 @@ const CheckOutComponent = ({ width = "w-1/4", roomType, capacity }) => {
       type: "ADD_ROOM",
       room: { roomType: roomType, count: roomCounts },
     });
-    setAmount(amount + 800);
+    setAmount(amount + roomCost);
   };
 
   const decrementer = (e) => {
@@ -27,9 +36,17 @@ const CheckOutComponent = ({ width = "w-1/4", roomType, capacity }) => {
       type: "REMOVE_ROOM",
       room: { roomType: roomType, count: roomCounts },
     });
-    setAmount(amount - 800);
+    setAmount(amount - roomCost);
   };
-  // const roomCost = roomState[roomType]['roomCost']
+
+
+  useEffect(() => {
+    if(isExpired){
+      alert('Session expired, please login again')
+      localStorage.clear('token')
+      navigate('/login')
+    }
+  });
 
   return (
     <div className="md:flex items-center mt-14 py-8 border-t border-gray-200 lg:space-x-5 space-y-5">
@@ -54,7 +71,7 @@ const CheckOutComponent = ({ width = "w-1/4", roomType, capacity }) => {
           Composition: 100% calf leather
         </p>
         <p className="text-3xl font-black leading-none text-gray-800 w-full">
-          800
+          {roomCost}
         </p>
 
         <div className="flex text-2xl space-x-10">
