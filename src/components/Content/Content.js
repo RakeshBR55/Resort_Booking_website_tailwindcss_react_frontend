@@ -1,15 +1,15 @@
 import React from "react";
 import BookingForm from "../bookingForm/BookingForm";
-import Hero2 from "../hero/Hero2";
+import Hero2 from "../Hero2";
 import "./content.css"
 
 const Content = () => {
   return (
     <div
-      className="h-56 sm:h-64 xl:h-screen w-full bg-cover mt-16 "
+      className="h-64 sm:h-64 xl:h-screen w-full bg-cover mt-16 "
       style={{ backgroundImage: "url(/jog.jpg" }}
     >
-      <div className="h-56  sm:h-64 xl:h-screen w-full  mt-16 moving-image">
+      <div className="h-56  sm:h-64 xl:h-screen w-full moving-image">
         <img src="/fog2.png" alt="animated" />
       </div>
       <BookingForm />
@@ -20,5 +20,5 @@ const Content = () => {
 
 export default Content;
 
-// style={{background: "url(/fog2.png)",backgroundRepeat:"repeat-x",backgroundPosition:"center", animation: "60s", animationTimingFunction: "linear", animationIterationCount:"infinite"}}
+
 
