@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext} from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import { BsFillPersonPlusFill } from "react-icons/bs";
 import { AiOutlineLogin } from "react-icons/ai";
@@ -13,9 +13,8 @@ const Navbar2 = () => {
     localStorage.removeItem("token");
     window.location.reload();
   };
-  const {decodedToken,isMyTokenExpired} = useContext(authContext)
-  console.log(decodedToken)
   
+  const {decodedToken} = useContext(authContext);
   return (
     <>
       <div className="bg-transparent h-full w-full">

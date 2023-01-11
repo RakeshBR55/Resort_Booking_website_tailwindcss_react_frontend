@@ -14,8 +14,7 @@ const roomReducer = (state,action)=>{
             roomType = action.room['roomType']
             roomCount = action.room['count'] + 1
             newState = newState.map( ele => {
-                return ele['roomType'] === roomType ? {...ele,roomsBooked:roomCount} : ele
-               
+                return ele['roomType'] === roomType ? {...ele,roomsBooked:roomCount,'adults':action.room['adults'], 'children':action.room['children']} : ele
             })
             break;
 
@@ -24,9 +23,10 @@ const roomReducer = (state,action)=>{
             roomType = action.room['roomType'];
             roomCount = action.room['count'] - 1;
             newState = newState.map( ele => {
-                return ele['roomType'] === roomType ? {...ele,roomsBooked:roomCount} : ele
+                return ele['roomType'] === roomType ? {...ele,roomsBooked:roomCount,'adults':action.room['adults'], 'children':action.room['children']} : ele
             })
             break;
+       
         default:
             return state
     }
@@ -41,17 +41,19 @@ export const  CheckOutState = ({children})=>{
 
     //intial state for the useReducer hook
     const initialRoomState = [
-        {   roomType:'Single Room',
+        {   roomType:'Non A/C Room',
             roomsBooked:0,
-            roomCost:800
+            roomCost:1200,
+            'adults':0,
+            'children':0
         },
-        {   roomType:'Double Room',
+        {   roomType:'A/C Room',
             roomsBooked:0,
-            roomCost:900
+            roomCost:2000,
         },
-        {   roomType:'Luxury Room',
+        {   roomType:'Group Room',
             roomsBooked:0,
-            roomCost:1200
+            roomCost:1200,
         }
     ]
 

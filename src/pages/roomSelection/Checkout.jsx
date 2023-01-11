@@ -1,10 +1,12 @@
-import React, { useContext, useState , useEffect } from "react";
+import React, { useContext, useState,useEffect} from "react";
 import { Link , useNavigate } from "react-router-dom";
 import CheckOutComponent from "../../components/CheckOutComponent";
-import { CheckOutContext } from "../../context/amountContext";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { CheckOutContext } from "../../context/amountContext";
 import {authContext} from '../../context/authContext';
+// import useFetch from '../../hooks/useFetch';
+
 const Checkout = () => {
   //Function to calculate days between two dates
   function dayCount(startDate, endDate) {
@@ -14,23 +16,17 @@ const Checkout = () => {
     return Math.round(differenceMs / 1000 / 60 / 60 / 24);
   }
 
-  const token = localStorage.getItem("token"); //Token for user Auth
+  const { roomState, amount ,checkIn,setCheckIn,checkOut, setCheckOut } = useContext(CheckOutContext);
   const __DEV__ = document.domain === "localhost";
-
-  const { roomState, amount } = useContext(CheckOutContext);
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setendDate] = useState(new Date());
-
   const roomDetails = roomState.filter((ele) => {
     return ele["roomsBooked"] > 0
       ? { roomType: ele["roomType"], roomsBooked: ele["roomsBooked"] }
       : null;
   });
   
-  const days = dayCount(startDate, endDate);
+  const days = dayCount(checkIn, checkOut);
 
   async function displayRazorpay() {
-
     const response = await fetch("http://127.0.0.1:8800/api/payment/booking", {
       method: "POST",
       headers: {
@@ -49,24 +45,19 @@ const Checkout = () => {
       description:
         "Thank you for booking, your room will be booked after the payment",
       order_id: resData.id,
-
-      //Handler function for payment verification
       handler: async function (response) {
-
         const data = {
           razorpayPaymentId: response.razorpay_payment_id,
           razropayOrderId: response.razorpay_order_id,
           razorpaySignature: response.razorpay_signature,
           roomDetails: roomDetails,
-          checkIn: startDate,
-          checkOut: endDate,
+          'checkIn':checkIn ,
+          'checkOut': checkOut,
         };
-
-        //Payment Verification
         const verify = await fetch("http://127.0.0.1:8800/api/payment/verification", {
           method: "POST",
           headers: {
-            "x-access-token": token,
+            "x-access-token": localStorage.getItem("token"),
             "Content-type": "application/json",
           },
           body: JSON.stringify(data),
@@ -149,24 +140,24 @@ const Checkout = () => {
               <div className="my-2 p-1 md:flex mt-10 rounded">
                 <p className="  text-black pl-2 mt-2 w-48">Check in:</p>
                 <DatePicker
-                  selected={startDate}
-                  onChange={(date) => setStartDate(date)}
+                  selected={checkIn}
+                  onChange={(date) => setCheckIn(date)}
                   dateFormat="dd/MM/yyyy"
                   placeholderText="To"
                   className="bg-grey-100 text-black border-black rounded-xl "
                 />
                 <p className="  text-black pl-2 mt-2 w-48">Check out:</p>
                 <DatePicker
-                  selected={endDate}
-                  onChange={(date) => setendDate(date)}
+                  selected={checkOut}
+                  onChange={(date) => setCheckOut(date)}
                   dateFormat="dd/MM/yyyy"
                   placeholderText="To"
                   className="bg-grey-100 text-black border-black rounded-xl "
                 />
               </div>
-              <CheckOutComponent amount={9000} roomType="Single Room" capacity={2} />
-              <CheckOutComponent amount={8000} roomType="Double Room" capacity={2} />
-              <CheckOutComponent amount={7000} roomType="Luxury Room" capacity={2} />
+              <CheckOutComponent amount={9000} roomType="Non A/C Room" capacity={2} />
+              <CheckOutComponent amount={8000} roomType="A/C Room" capacity={2} />
+              <CheckOutComponent amount={7000} roomType="Group Room" capacity={2} />
             </div>
 
             <div className=" md:w-1/2  w-full bg-gray-100 h-full">

@@ -3,39 +3,48 @@ import roomImg from "../assets/room1.jpg";
 import { CheckOutContext } from "../context/amountContext";
 
 const CheckOutComponent = ({ width = "w-1/4", roomType, capacity }) => {
-  const { setAmount, amount, roomState, dispatch } = useContext(CheckOutContext);
+  const { setAmount, amount, roomState, dispatch } =
+    useContext(CheckOutContext);
   const [roomCounts, setroomCounts] = useState(0);
+  const [adults, setAdults] = useState(0);
+  const [children, setChildren] = useState(0);
 
   const room = roomState.filter((ele) => {
     return ele["roomType"] === roomType ? ele["roomCost"] : null;
   });
   const roomCost = room[0]["roomCost"];
 
-  const incrementer = (e) => {
+  const addRoom = (e) => {
     e.preventDefault();
-    if (roomCounts === 4) {
-      return;
-    }
     setroomCounts(roomCounts + 1);
     dispatch({
       type: "ADD_ROOM",
-      room: { roomType: roomType, count: roomCounts },
+      room: {
+        roomType: roomType,
+        count: roomCounts,
+        
+      },
     });
     setAmount(amount + roomCost);
   };
 
-  const decrementer = (e) => {
+  const removeRoom = (e) => {
     e.preventDefault();
     if (roomCounts === 0) return;
     setroomCounts(roomCounts - 1);
-
     dispatch({
       type: "REMOVE_ROOM",
-      room: { roomType: roomType, count: roomCounts },
+      room: {
+        roomType: roomType,
+        count: roomCounts,
+      },
     });
     setAmount(amount - roomCost);
   };
 
+ 
+
+  
   return (
     <div className="md:flex items-center mt-14 py-8 border-t border-gray-200 lg:space-x-5 space-y-5">
       <div>
@@ -61,18 +70,18 @@ const CheckOutComponent = ({ width = "w-1/4", roomType, capacity }) => {
         <p className="text-3xl font-black leading-none text-gray-800 w-full">
           {roomCost}
         </p>
-
-        <div className="flex text-2xl space-x-10">
+        <p>Enter no of People</p>
+        <div className="flex text-2xl space-x-10 justify-between">
           <button
             className="w-20 border-blue-500 border rounded-md"
-            onClick={decrementer}
+            onClick={removeRoom}
           >
             -
           </button>
           <p>{roomCounts}</p>
           <button
             className="w-20 border-blue-500 border rounded-md"
-            onClick={incrementer}
+            onClick={addRoom}
           >
             +
           </button>
