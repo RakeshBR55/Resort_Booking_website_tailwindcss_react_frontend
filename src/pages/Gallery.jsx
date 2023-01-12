@@ -1,4 +1,12 @@
 import React from "react";
+import gallery1 from "../assets/gallery/IMG20221225162315.jpg"
+import gallery2 from "../assets/gallery/IMG20221230193249 (1).jpg"
+import gallery3 from "../assets/gallery/IMG20221230193249.jpg"
+import gallery4 from "../assets/gallery/IMG20221230193557.jpg"
+import gallery5 from "../assets/gallery/IMG20221230194612.jpg"
+import gallery6 from "../assets/gallery/IMG20230101172612.jpg"
+import gallery7 from "../assets/gallery/IMG20221230194707.jpg"
+
 
 const Gallery = () => {
   return (
@@ -14,21 +22,21 @@ const Gallery = () => {
                 <img
                   alt="gallery"
                   className="block object-cover object-center w-full h-full rounded-lg"
-                  src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(70).webp"
+                  src={gallery1}
                 />
               </div>
               <div className="w-1/2 p-1 md:p-2">
                 <img
                   alt="gallery"
                   className="block object-cover object-center w-full h-full rounded-lg"
-                  src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(72).webp"
+                  src={gallery2}
                 />
               </div>
               <div className="w-full p-1 md:p-2">
                 <img
                   alt="gallery"
                   className="block object-cover object-center w-full h-full rounded-lg"
-                  src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
+                  src={gallery3}
                 />
               </div>
             </div>
@@ -37,21 +45,21 @@ const Gallery = () => {
                 <img
                   alt="gallery"
                   className="block object-cover object-center w-full h-full rounded-lg"
-                  src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(74).webp"
+                  src={gallery4}
                 />
               </div>
               <div className="w-1/2 p-1 md:p-2">
                 <img
                   alt="gallery"
                   className="block object-cover object-center w-full h-full rounded-lg"
-                  src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(75).webp"
+                  src={gallery5}
                 />
               </div>
               <div className="w-1/2 p-1 md:p-2">
                 <img
                   alt="gallery"
                   className="block object-cover object-center w-full h-full rounded-lg"
-                  src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(77).webp"
+                  src={gallery6}
                 />
               </div>
             </div>
@@ -66,7 +74,7 @@ const Gallery = () => {
                 <img
                   alt="gallery"
                   className="block object-cover object-center w-full h-full rounded-lg"
-                  src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(70).webp"
+                  src={gallery7}
                 />
               </div>
               <div className="w-1/2 p-1 md:p-2">
@@ -80,7 +88,7 @@ const Gallery = () => {
                 <img
                   alt="gallery"
                   className="block object-cover object-center w-full h-full rounded-lg"
-                  src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
+                  src={gallery4}
                 />
               </div>
             </div>
@@ -89,7 +97,7 @@ const Gallery = () => {
                 <img
                   alt="gallery"
                   className="block object-cover object-center w-full h-full rounded-lg"
-                  src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(74).webp"
+                  src={gallery5}
                 />
               </div>
               <div className="w-1/2 p-1 md:p-2">

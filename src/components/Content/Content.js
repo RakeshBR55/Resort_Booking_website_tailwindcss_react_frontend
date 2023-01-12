@@ -9,9 +9,9 @@ import logo from "../../assets/logo_homestay.png";
 
 const Content = () => {
   return (
-    <div>
+    <div className="bg-blue-100">
       <div
-        className="h-64 sm:h-64 xl:h-screen w-full overflow-x-hidden bg-cover mt-16 "
+        className="h-64 sm:h-64 xl:h-screen w-full bg-cover mt-16 "
         style={{ backgroundImage: "url(/jog.jpg" }}
       >
         <div className="flex hidden lg:block z-0 mx-auto z-0 w-1/4 h-1/4 ">
@@ -24,10 +24,18 @@ const Content = () => {
         <div className="h-56 sm:h-64 xl:h-screen lg:z-40 lg:-mt-64 w-full moving-image">
           <img src="/fog2.png" alt="animated" />
         </div>
-        <div className="relative">
+        <div>
           <BookingForm />
-          <Hero2 />
         </div>
+      </div>
+      <div className="bg-blue-100">
+        <Hero2 />
+        <Features />
+        <h1 className="md:text-5xl text-xl font-Rubik text-center p-4 text-green-800">
+          Tourist places and Attractions
+        </h1>
+        <Attractions />
+        <Review />
       </div>
     </div>
   );

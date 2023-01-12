@@ -6,7 +6,7 @@ const Attractions = () => {
   return (
     <div
       id="carouselDarkVariant"
-      className="carousel slide carousel-fade md:w-3/4 mx-auto carousel-dark relative"
+      className="carousel slide carousel-fade md:w-3/4 h-3/4 mx-auto carousel-dark relative"
       data-bs-ride="carousel"
     >
       <div className="carousel-inner rounded-tl-3xl rounded-br-3xl relative w-full overflow-hidden">
