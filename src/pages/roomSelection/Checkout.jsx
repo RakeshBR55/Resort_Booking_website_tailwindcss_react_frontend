@@ -10,6 +10,8 @@ import { authContext } from "../../context/authContext";
 const Checkout = () => {
   const navigate = useNavigate();
   const { decodedToken, isMyTokenExpired } = useContext(authContext);
+
+
   useEffect(() => {
     if (decodedToken === null || isMyTokenExpired) {
       navigate("/login");
