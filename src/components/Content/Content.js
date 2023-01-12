@@ -7,7 +7,7 @@ const Content = () => {
   return (
     <div className="absolute top-0">
       <div
-        className="h-64 sm:h-64 xl:h-screen w-full bg-cover mt-16 "
+        className="h-64 sm:h-64 xl:h-screen w-full overflow-x-hidden bg-cover mt-16 "
         style={{ backgroundImage: "url(/jog.jpg" }}
       >
         <div className="h-56 sm:h-64 xl:h-screen w-full moving-image">

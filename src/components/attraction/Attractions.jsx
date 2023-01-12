@@ -12,9 +12,24 @@ const Attractions = () => {
       <div className="carousel-inner rounded-tl-3xl rounded-br-3xl relative w-full overflow-hidden">
         <div className="carousel-item active relative float-left w-full">
           <img src={bridge} className="block w-full" alt="Motorbike Smoke" />
+          <div className="carousel-caption hidden  backdrop-blur md:block absolute text-center">
+            <h5 className="text-3xl  font-bold text-white ">Hanging Bridge</h5>
+            <p className="text-white">
+              It'll take just 20 km drive to enjoy the great view of the hanging
+              bridge
+            </p>
+          </div>
+        </div>
+
+        <div className="carousel-item relative float-left w-full">
+          <img
+            src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(35).webp"
+            className="block w-full"
+            alt="Mountaintop"
+          />
           <div className="carousel-caption hidden md:block absolute text-center">
-            <h5 className="text-3xl font-bold  text-white">Hanging Bridge</h5>
-            <p>Some representative placeholder content for the first slide.</p>
+            <h5 className="text-xl">Second slide label</h5>
+            <p>Some representative placeholder content for the second slide.</p>
           </div>
         </div>
 
