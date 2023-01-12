@@ -1,13 +1,21 @@
-import React, { useContext, useState,useEffect} from "react";
-import { Link , useNavigate } from "react-router-dom";
+import React, { useContext, useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import CheckOutComponent from "../../components/CheckOutComponent";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { CheckOutContext } from "../../context/amountContext";
-import {authContext} from '../../context/authContext';
+import { authContext } from "../../context/authContext";
 // import useFetch from '../../hooks/useFetch';
 
 const Checkout = () => {
+  const navigate = useNavigate();
+  const { decodedToken, isMyTokenExpired } = useContext(authContext);
+  useEffect(() => {
+    if (decodedToken === null || isMyTokenExpired) {
+      navigate("/login");
+    }
+  }, [isMyTokenExpired, decodedToken]);
+
   //Function to calculate days between two dates
   function dayCount(startDate, endDate) {
     const milliseconds1 = startDate.getTime();
@@ -16,14 +24,15 @@ const Checkout = () => {
     return Math.round(differenceMs / 1000 / 60 / 60 / 24);
   }
 
-  const { roomState, amount ,checkIn,setCheckIn,checkOut, setCheckOut } = useContext(CheckOutContext);
+  const { roomState, amount, checkIn, setCheckIn, checkOut, setCheckOut } =
+    useContext(CheckOutContext);
   const __DEV__ = document.domain === "localhost";
   const roomDetails = roomState.filter((ele) => {
     return ele["roomsBooked"] > 0
       ? { roomType: ele["roomType"], roomsBooked: ele["roomsBooked"] }
       : null;
   });
-  
+
   const days = dayCount(checkIn, checkOut);
 
   async function displayRazorpay() {
@@ -51,17 +60,20 @@ const Checkout = () => {
           razropayOrderId: response.razorpay_order_id,
           razorpaySignature: response.razorpay_signature,
           roomDetails: roomDetails,
-          'checkIn':checkIn ,
-          'checkOut': checkOut,
+          checkIn: checkIn,
+          checkOut: checkOut,
         };
-        const verify = await fetch("http://127.0.0.1:8800/api/payment/verification", {
-          method: "POST",
-          headers: {
-            "x-access-token": localStorage.getItem("token"),
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
+        const verify = await fetch(
+          "http://127.0.0.1:8800/api/payment/verification",
+          {
+            method: "POST",
+            headers: {
+              "x-access-token": localStorage.getItem("token"),
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify(data),
+          }
+        );
 
         const res = await verify.json();
         if (res.status === "ok") {
@@ -83,16 +95,6 @@ const Checkout = () => {
     const razorPay = new window.Razorpay(options);
     razorPay.open();
   }
-
-  const navigate = useNavigate()
-  const {isExpired} = useContext(authContext)
-  useEffect(() => {
-    if(isExpired){
-      alert('Session expired, please login again')
-      localStorage.clear('token')
-      navigate('/login')
-    }
-  });
 
   return (
     <>
@@ -155,18 +157,42 @@ const Checkout = () => {
                   className="bg-grey-100 text-black border-black rounded-xl "
                 />
               </div>
-              <CheckOutComponent amount={9000} roomType="Non A/C Room" capacity={2} />
-              <CheckOutComponent amount={8000} roomType="A/C Room" capacity={2} />
-              <CheckOutComponent amount={7000} roomType="Group Room" capacity={2} />
+              <CheckOutComponent
+                amount={9000}
+                roomType="Non A/C Room"
+                capacity={2}
+              />
+              <CheckOutComponent
+                amount={8000}
+                roomType="A/C Room"
+                capacity={2}
+              />
+              <CheckOutComponent
+                amount={7000}
+                roomType="Dormitory room"
+                capacity={2}
+              />
             </div>
 
             <div className=" md:w-1/2  w-full bg-gray-100 h-full">
               <div className="flex flex-col md:h-screen px-14 py-20  overflow-y-auto">
                 <div>
-                  <p className="text-4xl font-black leading-9 text-gray-800">
+                  <p className="text-4xl font-black leading-9 text-gray-800 pb-16">
                     Summary
                   </p>
-                  <div className="flex items-center justify-between pt-16">
+                  {roomDetails.map((room) => {
+                    return (
+                      <div className="flex items-center justify-between my-5">
+                        <p className="text-base leading-none text-gray-800">
+                          {room.roomType}
+                        </p>
+                        <p className="text-base leading-none text-gray-800">
+                          {room.roomsBooked}
+                        </p>
+                      </div>
+                    );
+                  })}
+                  <div className="flex items-center justify-between">
                     <p className="text-base leading-none text-gray-800">
                       Subtotal
                     </p>
@@ -175,10 +201,10 @@ const Checkout = () => {
                     </p>
                   </div>
                   <div className="flex items-center justify-between pt-5">
+                    <p className="text-base leading-none text-gray-800">Days</p>
                     <p className="text-base leading-none text-gray-800">
-                      Days
+                      {days}
                     </p>
-                    <p className="text-base leading-none text-gray-800">{days}</p>
                   </div>
                   <div className="flex items-center justify-between pt-5">
                     <p className="text-base leading-none text-gray-800">Tax</p>
@@ -191,7 +217,7 @@ const Checkout = () => {
                       Total
                     </p>
                     <p className="text-2xl font-bold leading-normal text-right text-gray-800">
-                      {amount*days}
+                      {amount * days}
                     </p>
                   </div>
                   <button

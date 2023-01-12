@@ -15,9 +15,11 @@ const Navbar2 = () => {
   };
   
   const {decodedToken} = useContext(authContext);
+  // const isAdmin = decodedToken.isAdmin;
+  console.log(decodedToken)
   return (
     <>
-      <div className="bg-transparent h-full w-full">
+      <div className="bg-transparent h-full">
         {/* Code block starts */}
         <nav className="backdrop-blur-xl fixed-top shadow xl:block hidden">
           <div className="mx-auto container px-6 py-2 xl:py-0">
