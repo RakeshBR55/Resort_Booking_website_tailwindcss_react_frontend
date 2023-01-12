@@ -7,11 +7,11 @@ const Home2 = () => {
   return (
     <div className="overflow-hidden">
       <div>
-        <Navbar2/>
+        <Navbar2 />
         <div>
-          <Outlet/>
+          <Outlet />
         </div>
-        <Footer/>
+        <Footer />
       </div>
     </div>
   );

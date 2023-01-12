@@ -7,8 +7,15 @@ import { CheckOutContext } from "../../context/amountContext";
 const BookingForm = () => {
   const { checkIn,setCheckIn,checkOut,setCheckOut } = React.useContext(CheckOutContext);
   return (
-    <div className="flex z-10  mx-auto">
-      <div className="bg-blue-900 border lg:backdrop-blur-xl w-full mx-auto  md:-mt-36 md:bg-transparent rounded-2xl lg:-mt-10 flex flex-col items-center">
+    <div className="flex-column lg:z-10 w-[40%] lg:-mt-56  mx-auto">
+    <div className="text-sm  mx-auto my-auto w-24 visible lg:invisible lg:p-2 backdrop-blur-xl focus:outline-none flex justify-center items-center rounded font-bold cursor-pointer  hover:bg-teal-700 hover:text-teal-100 
+         
+        text-white 
+        border duration-200 ease-in-out 
+        border-teal-600 transition">
+            <Link to="checkout">Book now</Link>
+          </div>
+      <div className=" border hidden lg:block lg:backdrop-blur-xl  w-full mx-auto  md:-mt-36 md:bg-transparent rounded-2xl lg:-mt-10 flex flex-col items-center">
         <div>
           <div className="my-2 lg:p-1  flex rounded">
             <h1 className="text-2xl md:text-4xl text-center mx-auto font-Rubik text-white">
@@ -29,7 +36,7 @@ const BookingForm = () => {
               />
             </div>
             <div className="my-2 p-1 bg-transparent flex  rounded">
-              <p className="py-2 lg:ml-4 text-white">To:</p>
+              <p className="p-2 lg:ml-4 text-white">To: </p>
               <DatePicker
                 selected={checkOut}
                 onChange={(date) => setCheckOut(date)}
@@ -41,7 +48,7 @@ const BookingForm = () => {
           </div>
           
         </div>
-        <div className="text-sm my-2 mx-auto lg:p-2 focus:outline-none flex justify-center items-center rounded font-bold cursor-pointer  hover:bg-teal-700 hover:text-teal-100 
+        <div className="text-sm my-2 mx-auto w-24 lg:p-2 focus:outline-none flex justify-center items-center rounded font-bold cursor-pointer  hover:bg-teal-700 hover:text-teal-100 
         bg-teal-100  
         text-teal-700 
         border duration-200 ease-in-out 
@@ -49,6 +56,7 @@ const BookingForm = () => {
             <Link to="checkout">GO</Link>
           </div>
       </div>
+      
     </div>
   );
 };
