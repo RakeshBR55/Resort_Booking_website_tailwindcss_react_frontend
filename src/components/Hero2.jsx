@@ -1,7 +1,6 @@
 import React from "react";
-import homestayimg from "../assets/homestay-night-2.jpg"
-import {Link} from "react-router-dom"
-
+import homestayimg from "../assets/homestay-night-2.jpg";
+import { Link } from "react-router-dom";
 
 const Hero2 = () => {
   return (
@@ -18,11 +17,16 @@ const Hero2 = () => {
             role="contentinfo"
             className="focus:outline-none text-base text-justify lg:text-left leading-6 mt-8 text-gray-600 2xl:pr-24 xl:pr-0 "
           >
-            Our homestay website connects travelers with local hosts who offer comfortable and authentic accommodation options. Visitors can choose from a variety of options such as private rooms, shared rooms, or entire homes/apartments. Our website also includes reviews, photos, and detailed information to help you find the perfect homestay for your trip. Book with us for an immersive and cultural experience.
+            Our homestay website connects travelers with local hosts who offer
+            comfortable and authentic accommodation options. Visitors can choose
+            from a variety of options such as private rooms, shared rooms, or
+            entire homes/apartments. Our website also includes reviews, photos,
+            and detailed information to help you find the perfect homestay for
+            your trip. Book with us for an immersive and cultural experience.
           </p>
           <div className="mt-10 hidden lg:block">
             <button className="flex items-center md:p-3 p-1 focus:outline-none text-xl font-medium leading-5 text-gray-800 focus:ring-2 focus:ring-offset-2 focus:ring-gray-700">
-            <Link to="gallery">Discover more</Link>
+              <Link to="gallery">Discover more</Link>
               <svg
                 className="ml-8"
                 width={45}
@@ -64,9 +68,9 @@ const Hero2 = () => {
               alt="Purple flowers on a book"
               className="md:w-full rounded-md sm:w-1/2 w-full"
             />
-            
           </div>
           <div className="mt-10 lg:hidden">
+            <Link to="/gallery">
               <button className="flex items-center md:p-3 p-1 focus:outline-none text-xl font-medium leading-5 text-gray-800 focus:ring-2 focus:ring-offset-2 focus:ring-gray-700">
                 Discover more
                 <svg
@@ -101,7 +105,8 @@ const Hero2 = () => {
                   />
                 </svg>
               </button>
-            </div>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

@@ -1,17 +1,18 @@
 import React from "react";
 import "tw-elements";
 import bridge from "../../assets/hanging bridge.png";
-
+import yana from '../../assets/yana.jpg'
+import viewpoint from '../../assets/viewpoint.jpg'
 const Attractions = () => {
   return (
     <div
       id="carouselDarkVariant"
-      className="carousel slide carousel-fade md:w-3/4 h-3/4 mx-auto carousel-dark relative"
+      className="carousel slide carousel-fade md:w-3/4 mx-auto carousel-dark relative"
       data-bs-ride="carousel"
     >
       <div className="carousel-inner rounded-tl-3xl rounded-br-3xl relative w-full overflow-hidden">
         <div className="carousel-item active relative float-left w-full">
-          <img src={bridge} className="block w-full" alt="Motorbike Smoke" />
+          <img src={bridge} className="block " alt="Motorbike Smoke" />
           <div className="carousel-caption hidden  backdrop-blur md:block absolute text-center">
             <h5 className="text-3xl  font-bold text-white ">Hanging Bridge</h5>
             <p className="text-white">
@@ -23,7 +24,7 @@ const Attractions = () => {
 
         <div className="carousel-item relative float-left w-full">
           <img
-            src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(35).webp"
+            src={yana}
             className="block w-full"
             alt="Mountaintop"
           />
@@ -47,7 +48,7 @@ const Attractions = () => {
 
         <div className="carousel-item relative float-left w-full">
           <img
-            src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(40).webp"
+            src={viewpoint}
             className="block w-full"
             alt="Woman Reading a Book"
           />

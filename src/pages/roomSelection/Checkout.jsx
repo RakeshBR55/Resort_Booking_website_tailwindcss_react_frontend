@@ -1,16 +1,15 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import CheckOutComponent from "../../components/CheckOutComponent";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { CheckOutContext } from "../../context/amountContext";
 import { authContext } from "../../context/authContext";
-// import useFetch from '../../hooks/useFetch';
+
 
 const Checkout = () => {
   const navigate = useNavigate();
   const { decodedToken, isMyTokenExpired } = useContext(authContext);
-
 
   useEffect(() => {
     if (decodedToken === null || isMyTokenExpired) {
@@ -36,9 +35,8 @@ const Checkout = () => {
   });
 
   const days = dayCount(checkIn, checkOut);
-
   async function displayRazorpay() {
-    const response = await fetch("http://127.0.0.1:8800/api/payment/booking", {
+    const response = await fetch(`https://madhu-home-stay.onrender.com/api/payment/booking`, {
       method: "POST",
       headers: {
         "x-access-token": localStorage.getItem("token"),
@@ -66,7 +64,7 @@ const Checkout = () => {
           checkOut: checkOut,
         };
         const verify = await fetch(
-          "http://127.0.0.1:8800/api/payment/verification",
+          "https://madhu-home-stay.onrender.com/api/payment/verification",
           {
             method: "POST",
             headers: {
@@ -79,7 +77,8 @@ const Checkout = () => {
 
         const res = await verify.json();
         if (res.status === "ok") {
-          alert("Payment Successful");
+          alert("Payment Successful, booking details available in your profile");
+          navigate('/');
         } else {
           alert("payment failed");
         }

@@ -1,21 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link } from "react-router-dom";
 import { CheckOutContext } from "../../context/amountContext";
 
 const BookingForm = () => {
-  const { checkIn,setCheckIn,checkOut,setCheckOut } = React.useContext(CheckOutContext);
+  const { checkIn, setCheckIn, checkOut, setCheckOut } =
+    React.useContext(CheckOutContext);
   return (
-    <div className="flex-column lg:z-10 w-[40%] lg:-mt-56  mx-auto">
-    <div className="text-sm  mx-auto my-auto w-24 visible lg:invisible lg:p-2 backdrop-blur-xl focus:outline-none flex justify-center items-center rounded font-bold cursor-pointer  hover:bg-teal-700 hover:text-teal-100 
+    <div className="flex-column lg:z-10 w-[40%] lg:w-[50%] lg:-mt-56  mx-auto flex justify-center items-center">
+      <div
+        className="text-sm  mx-auto my-auto w-24 visible lg:invisible lg:p-2 backdrop-blur-xl focus:outline-none flex justify-center items-center rounded font-bold cursor-pointer  hover:bg-teal-700 hover:text-teal-100 
          
         text-white 
         border duration-200 ease-in-out 
-        border-teal-600 transition">
-            <Link to="checkout">Book now</Link>
-          </div>
-      <div className=" border hidden lg:block lg:backdrop-blur-xl  w-full mx-auto  md:-mt-36 md:bg-transparent rounded-2xl lg:-mt-10 flex flex-col items-center">
+        border-teal-600 transition"
+      >
+        <Link to="checkout">Book now</Link>
+      </div>
+      <div className=" border hidden lg:backdrop-blur-xl  w-full mx-auto  md:-mt-36 md:bg-transparent rounded-2xl lg:-mt-10 lg:flex flex-col items-center">
         <div>
           <div className="my-2 lg:p-1  flex rounded">
             <h1 className="text-2xl md:text-4xl text-center mx-auto font-Rubik text-white">
@@ -46,17 +49,17 @@ const BookingForm = () => {
               />
             </div>
           </div>
-          
         </div>
-        <div className="text-sm my-2 mx-auto w-24 lg:p-2 focus:outline-none flex justify-center items-center rounded font-bold cursor-pointer  hover:bg-teal-700 hover:text-teal-100 
+        <div
+          className="text-sm my-2 mx-auto w-24 lg:p-2 focus:outline-none flex justify-center items-center rounded font-bold cursor-pointer  hover:bg-teal-700 hover:text-teal-100 
         bg-teal-100  
         text-teal-700 
         border duration-200 ease-in-out 
-        border-teal-600 transition">
-            <Link to="checkout">GO</Link>
-          </div>
+        border-teal-600 transition"
+        >
+          <Link to="checkout">GO</Link>
+        </div>
       </div>
-      
     </div>
   );
 };

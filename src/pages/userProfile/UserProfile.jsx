@@ -1,24 +1,22 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import BookingCard from "./BookingCard";
 import ProfileCard from "./ProfileCard";
 import ProfileDetails from "./ProfileDetails";
 import useFetch from "../../hooks/useFetch";
 import { authContext } from "../../context/authContext";
-import { useNavigate } from "react-router-dom";
+
 const UserProfile = () => {
-  const { decodedToken, isMyTokenExpired } = useContext(authContext);
-  const navigate = useNavigate();
-  
+  const { decodedToken } = useContext(authContext);
+  const url = process.env.URL
   const { data, loading } = useFetch(
-    `http://127.0.0.1:8800/api/user/${decodedToken.userId}`
+    `https://madhu-home-stay.onrender.com/api/user/${decodedToken.userId}`
   );
   const { user, booking } = data;
 
-  
   return loading || data.length === 0 ? (
     <div className="flex justify-center items-center h-screen">Loading</div>
   ) : (
-    <div className="mt-24 w-full md:w-[80vw] p-5 bg-slate-100 mx-auto flex space-y-5 flex-wrap bg-gray-400">
+    <div className="mt-24 w-full md:w-[80vw] p-5 bg-slate-100 mx-auto flex space-y-5 flex-wrap bg-blue-100">
       <div className="w-full flex flex-col lg:flex-row flex-wrap space-x-0 space-y-5 lg:space-x-5 ">
         <ProfileCard name={user.fullName} email={user.email} width="w-96" />
         <ProfileDetails

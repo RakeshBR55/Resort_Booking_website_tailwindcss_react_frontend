@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useState} from "react";
+import { useState } from "react";
 
 const Signup = () => {
   // const URL = process.env.URL
@@ -13,7 +13,7 @@ const Signup = () => {
   const navigate = useNavigate();
   async function registerUser(event) {
     event.preventDefault();
-    const response = await fetch(`http://127.0.0.1:8800/api/user/register`, {
+    const response = await fetch("https://madhu-home-stay.onrender.com/api/user/register",{
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -22,19 +22,18 @@ const Signup = () => {
         fullName,
         email,
         password,
-        contact
+        contact,
       }),
     });
 
     const data = await response.json();
-    console.log(data)
+    console.log(data);
     if (data.status === "ok") {
-    alert('User successfully registered');
-     navigate('/login')
-    }
-    else{
-      alert('error')
-      navigate('/')
+      alert("User successfully registered");
+      navigate("/login");
+    } else {
+      alert("error");
+      navigate("/");
     }
   }
   return (

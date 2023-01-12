@@ -14,7 +14,7 @@ const Content = () => {
         className="h-64 sm:h-64 xl:h-screen w-full bg-cover mt-16 "
         style={{ backgroundImage: "url(/jog.jpg" }}
       >
-        <div className="flex hidden lg:block z-0 mx-auto z-0 w-1/4 h-1/4 ">
+        <div className="hidden lg:block  mx-auto z-0 w-1/4 h-1/4 ">
           <img
             alt="profile-pic"
             src={logo}

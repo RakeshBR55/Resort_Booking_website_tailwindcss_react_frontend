@@ -8,12 +8,10 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const {setDecodedToken} = useContext(authContext);
   const navigate = useNavigate();
-
   async function loginUser(event) {
     event.preventDefault();
-    console.log(email, password);
 
-    const response = await fetch("http://localhost:8800/api/user/login", {
+    const response = await fetch(`https://madhu-home-stay.onrender.com/api/user/login`, {
       method: "POST",
       credentials: "include",
       headers: {
