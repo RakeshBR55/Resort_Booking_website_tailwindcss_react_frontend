@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import BookingCard from "./BookingCard";
 import ProfileCard from "./ProfileCard";
 import ProfileDetails from "./ProfileDetails";
 import useFetch from "../../hooks/useFetch";
-
+import { authContext } from "../../context/authContext";
 const UserProfile = () => {
+  const { decodedToken } = useContext(authContext);
+  
   const { data, loading } = useFetch(
-    "http://127.0.0.1:8800/api/user/639adf2c21dc80dfbba6f71e"
+    `http://127.0.0.1:8800/api/user/${decodedToken.userId}`
   );
   const { user, booking } = data;
-  console.log(booking);
-
+  
   return loading || data.length === 0 ? (
     <div className="flex justify-center items-center h-screen">Loading</div>
   ) : (
@@ -26,12 +27,13 @@ const UserProfile = () => {
       <div className="w-full  bg-white shadow-lg rounded-lg p-5 space-y-3">
         <h2 className="text-center text-2xl">Booking Details </h2>
         <div>
-          {booking.map((item) => {
+          {booking.map((item,index) => {
             return (
               <BookingCard
                 checkIn={item.checkIn.substring(0, 10)}
                 checkOut={item.checkOut.substring(0, 10)}
                 roomDetails={item.roomDetails}
+                key={index}
               />
             );
           })}

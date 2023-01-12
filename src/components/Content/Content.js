@@ -5,18 +5,17 @@ import "./content.css";
 
 const Content = () => {
   return (
-    <div className="absolute top-0">
+    <div>
       <div
-        className="h-64 sm:h-64 xl:h-screen w-full bg-cover mt-16 "
+        className="lg:h-screen h-64 w-full bg-cover mt-16 overflow-x-hidden"
         style={{ backgroundImage: "url(/jog.jpg" }}
       >
         <div className="h-56 sm:h-64 xl:h-screen w-full moving-image">
           <img src="/fog2.png" alt="animated" />
         </div>
-        <div className="relative">
-          <BookingForm />
-          <Hero2 />
-        </div>
+      </div>
+      <div className="">
+        <Hero2 />
       </div>
     </div>
   );

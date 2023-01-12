@@ -51,7 +51,7 @@ export const  CheckOutState = ({children})=>{
             roomsBooked:0,
             roomCost:2000,
         },
-        {   roomType:'Group Room',
+        {   roomType:'Dormitory room',
             roomsBooked:0,
             roomCost:1200,
         }

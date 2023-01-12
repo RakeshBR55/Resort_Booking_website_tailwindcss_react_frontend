@@ -5,7 +5,7 @@ import Navbar2 from "../components/Navbar2";
 
 const Home2 = () => {
   return (
-    <div>
+    <div className="overflow-hidden">
       <div>
         <Navbar2/>
         <div>

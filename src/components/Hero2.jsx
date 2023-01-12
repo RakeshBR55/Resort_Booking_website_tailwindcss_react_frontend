@@ -3,12 +3,15 @@ import Attractions from "./attraction/Attractions";
 import Features from "./Features";
 import Review from "./Review";
 import { Link } from "react-router-dom";
+import BookingForm from "./bookingForm/BookingForm";
+
 const Hero2 = () => {
   return (
-    <div className="-mt-72 absolute top-0 lg:mt-0 w-full px-6 mx-auto">
+    <div className="lg:mt-0 w-full mx-auto">
+      <BookingForm/>
       <section className="mb-32">
         <div
-          className="relative flex overflow-hidden mt-5 bg-no-repeat bg-cover"
+          className="relative flex mt-5 bg-no-repeat bg-cover"
           style={{
             backgroundPosition: "50%",
             backgroundImage: "url(/map.png)",
