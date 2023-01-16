@@ -2,9 +2,7 @@ import React from "react";
 import gallery1 from "../assets/gallery/IMG20221225162315.jpg";
 import gallery2 from "../assets/gallery/IMG20221230193249 (1).jpg";
 import gallery3 from "../assets/gallery/IMG20221230193249.jpg";
-import gallery4 from "../assets/gallery/IMG20221230193557.jpg";
-import gallery5 from "../assets/gallery/IMG20221230194612.jpg";
-import gallery6 from "../assets/gallery/IMG20230101172612.jpg";
+import living_room from "../assets/gallery/living_room.jpg";
 import gallery7 from "../assets/gallery/IMG20221230194707.jpg";
 import cottages from "../assets/gallery/cottages.jpg";
 import dormitory from "../assets/gallery/Dormitory.jpg";
@@ -12,6 +10,7 @@ import dinner from "../assets/gallery/Dining area.jpg";
 import acroom from "../assets/gallery/Ac room.jpg"
 import entry from '../assets/gallery/Entry.jpg'
 import board from '../assets/gallery/board.jpg'
+import tunga_bhadra from '../assets/gallery/tunga_bhadra.jpg'
 const Gallery = () => {
   return (
     <div className="">
@@ -51,7 +50,7 @@ const Gallery = () => {
                 <img
                   alt="gallery"
                   className="block object-cover object-center w-full h-full rounded-lg"
-                  src={gallery7}
+                  src={tunga_bhadra}
                 />
               </div>
               <div className="w-1/2 p-1 md:p-2">
@@ -65,7 +64,7 @@ const Gallery = () => {
                 <img
                   alt="gallery"
                   className="block object-cover object-center w-full h-full rounded-lg"
-                  src={gallery6}
+                  src={living_room}
                 />
               </div>
             </div>

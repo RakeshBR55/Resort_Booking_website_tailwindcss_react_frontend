@@ -9,6 +9,8 @@ import acRoom from "../../assets/gallery/Ac room.jpg";
 import dormitory from '../../assets/gallery/Dormitory.jpg'
 import nonAcRoom from "../../assets/gallery/non Ac.jpg";
 const Checkout = () => {
+
+  
   const navigate = useNavigate();
   const { decodedToken, isMyTokenExpired } = useContext(authContext);
 

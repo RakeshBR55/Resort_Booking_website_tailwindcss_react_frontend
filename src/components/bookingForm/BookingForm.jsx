@@ -5,18 +5,24 @@ import { Link } from "react-router-dom";
 import { CheckOutContext } from "../../context/amountContext";
 
 const BookingForm = () => {
-  const { checkIn, setCheckIn, checkOut, setCheckOut } =
-    React.useContext(CheckOutContext);
+  const { checkIn, setCheckIn, checkOut, setCheckOut } = React.useContext(CheckOutContext);
+
+  const checkLogin = ( ) => {
+    if (!localStorage.getItem("token")) {
+      alert('Please login/signup to book a room') 
+    }
+  }
+
   return (
     <div className="flex-column lg:z-10 w-[40%] lg:w-[50%] lg:-mt-56  mx-auto flex justify-center items-center">
       <div
-        className="text-sm  mx-auto my-auto w-24 visible lg:invisible lg:p-2 backdrop-blur-xl focus:outline-none flex justify-center items-center rounded font-bold cursor-pointer  hover:bg-teal-700 hover:text-teal-100 
-         
+        className="text-sm  mx-auto my-auto w-24 visible lg:invisible lg:p-2 backdrop-blur-xl focus:outline-none flex justify-center items-center rounded font-bold cursor-pointer  hover:bg-teal-700 hover:text-teal-100  
         text-white 
         border duration-200 ease-in-out 
         border-teal-600 transition"
+        onClick={checkLogin}
       >
-        <Link to="checkout">Book now</Link>
+        Book Now
       </div>
       <div className=" border hidden lg:backdrop-blur-xl  w-full mx-auto  md:-mt-36 md:bg-transparent rounded-2xl lg:-mt-10 lg:flex flex-col items-center">
         <div>
@@ -56,8 +62,9 @@ const BookingForm = () => {
         text-teal-700 
         border duration-200 ease-in-out 
         border-teal-600 transition"
+        onClick={checkLogin}
         >
-          <Link to="checkout">GO</Link>
+          GO
         </div>
       </div>
     </div>

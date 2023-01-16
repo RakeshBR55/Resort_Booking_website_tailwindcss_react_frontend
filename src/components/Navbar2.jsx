@@ -1,5 +1,5 @@
 import React, { useState, useContext} from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { BsFillPersonPlusFill } from "react-icons/bs";
 import { AiOutlineLogin } from "react-icons/ai";
 import Content from "./Content/Content";
@@ -9,10 +9,10 @@ import logo from "../assets/logonav.png"
 const Navbar2 = () => {
   const [show, setShow] = useState(null);
   const [profile, setProfile] = useState(false);
-
+  const navigate = useNavigate();
   const logout = () => {
     localStorage.removeItem("token");
-    window.location.reload();
+    navigate('/')
   };
   
   const {decodedToken} = useContext(authContext);

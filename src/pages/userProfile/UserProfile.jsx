@@ -1,13 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 import BookingCard from "./BookingCard";
 import ProfileCard from "./ProfileCard";
 import ProfileDetails from "./ProfileDetails";
 import useFetch from "../../hooks/useFetch";
-import { authContext } from "../../context/authContext";
+import { decodeToken } from "react-jwt";
 
 const UserProfile = () => {
-  const { decodedToken } = useContext(authContext);
-  const url = process.env.URL
+  const token = localStorage.getItem("token")
+  const decodedToken = decodeToken(token);
+  
   const { data, loading } = useFetch(
     `/api/user/${decodedToken.userId}`
   );
