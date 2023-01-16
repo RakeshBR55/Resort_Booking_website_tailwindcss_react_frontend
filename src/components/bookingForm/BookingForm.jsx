@@ -1,15 +1,18 @@
 import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { Link } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import { CheckOutContext } from "../../context/amountContext";
 
 const BookingForm = () => {
   const { checkIn, setCheckIn, checkOut, setCheckOut } = React.useContext(CheckOutContext);
-
+  const navigate = useNavigate();
   const checkLogin = ( ) => {
     if (!localStorage.getItem("token")) {
       alert('Please login/signup to book a room') 
+    }
+    else{
+      navigate('/checkout');
     }
   }
 
