@@ -13,7 +13,7 @@ const Signup = () => {
   const navigate = useNavigate();
   async function registerUser(event) {
     event.preventDefault();
-    const response = await fetch("https://madhu-home-stay.onrender.com/api/user/register",{
+    const response = await fetch("/api/user/register",{
       method: "POST",
       headers: {
         "Content-Type": "application/json",

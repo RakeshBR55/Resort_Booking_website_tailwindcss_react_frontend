@@ -11,7 +11,7 @@ const Login = () => {
   async function loginUser(event) {
     event.preventDefault();
 
-    const response = await fetch(`https://madhu-home-stay.onrender.com/api/user/login`, {
+    const response = await fetch(`/api/user/login`, {
       method: "POST",
       credentials: "include",
       headers: {

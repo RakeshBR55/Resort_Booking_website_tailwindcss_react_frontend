@@ -9,7 +9,7 @@ const UserProfile = () => {
   const { decodedToken } = useContext(authContext);
   const url = process.env.URL
   const { data, loading } = useFetch(
-    `https://madhu-home-stay.onrender.com/api/user/${decodedToken.userId}`
+    `/api/user/${decodedToken.userId}`
   );
   const { user, booking } = data;
 

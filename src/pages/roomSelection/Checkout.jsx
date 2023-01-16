@@ -1,12 +1,13 @@
 import React, { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import CheckOutComponent from "../../components/CheckOutComponent";
+import CheckOutComponent from "./CheckOutComponent";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { CheckOutContext } from "../../context/amountContext";
 import { authContext } from "../../context/authContext";
-
-
+import acRoom from "../../assets/gallery/Ac room.jpg";
+import dormitory from '../../assets/gallery/Dormitory.jpg'
+import nonAcRoom from "../../assets/gallery/non Ac.jpg";
 const Checkout = () => {
   const navigate = useNavigate();
   const { decodedToken, isMyTokenExpired } = useContext(authContext);
@@ -27,7 +28,7 @@ const Checkout = () => {
 
   const { roomState, amount, checkIn, setCheckIn, checkOut, setCheckOut } =
     useContext(CheckOutContext);
-  const __DEV__ = document.domain === "localhost";
+
   const roomDetails = roomState.filter((ele) => {
     return ele["roomsBooked"] > 0
       ? { roomType: ele["roomType"], roomsBooked: ele["roomsBooked"] }
@@ -36,7 +37,7 @@ const Checkout = () => {
 
   const days = dayCount(checkIn, checkOut);
   async function displayRazorpay() {
-    const response = await fetch(`https://madhu-home-stay.onrender.com/api/payment/booking`, {
+    const response = await fetch(`/api/payment/booking`, {
       method: "POST",
       headers: {
         "x-access-token": localStorage.getItem("token"),
@@ -47,7 +48,7 @@ const Checkout = () => {
     const resData = await response.json(); //Data from server for payment
 
     const options = {
-      key: __DEV__ ? process.env.RAZOR_PAY_ID : "PRODUCTION_KEY",
+      key: "rzp_test_awwzQ7uQCXxYih",
       amount: resData.amount.toString(),
       currency: resData.currency,
       name: "Madhu Home Stay",
@@ -63,22 +64,21 @@ const Checkout = () => {
           checkIn: checkIn,
           checkOut: checkOut,
         };
-        const verify = await fetch(
-          "https://madhu-home-stay.onrender.com/api/payment/verification",
-          {
-            method: "POST",
-            headers: {
-              "x-access-token": localStorage.getItem("token"),
-              "Content-type": "application/json",
-            },
-            body: JSON.stringify(data),
-          }
-        );
+        const verify = await fetch("/api/payment/verification", {
+          method: "POST",
+          headers: {
+            "x-access-token": localStorage.getItem("token"),
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
 
         const res = await verify.json();
         if (res.status === "ok") {
-          alert("Payment Successful, booking details available in your profile");
-          navigate('/');
+          alert(
+            "Payment Successful, booking details available in your profile"
+          );
+          navigate("/");
         } else {
           alert("payment failed");
         }
@@ -161,17 +161,22 @@ const Checkout = () => {
               <CheckOutComponent
                 amount={9000}
                 roomType="Non A/C Room"
-                capacity={2}
+                rmImg={nonAcRoom}
+                meal={"Breakfast,Dinner and Midday Meal for trekking"}
+
               />
               <CheckOutComponent
                 amount={8000}
                 roomType="A/C Room"
-                capacity={2}
+                rmImg={acRoom}
+                meal={"Breakfast,Dinner and Midday Meal for trekking"}
+
               />
               <CheckOutComponent
                 amount={7000}
                 roomType="Dormitory room"
-                capacity={2}
+                meal={"Breakfast,Dinner and Midday Meal for trekking"}
+                rmImg={dormitory}
               />
             </div>
 
@@ -207,10 +212,7 @@ const Checkout = () => {
                       {days}
                     </p>
                   </div>
-                  <div className="flex items-center justify-between pt-5">
-                    <p className="text-base leading-none text-gray-800">Tax</p>
-                    <p className="text-base leading-none text-gray-800">$35</p>
-                  </div>
+                  
                 </div>
                 <div>
                   <div className="flex  items-center pb-6 justify-between md:mt-10  pt-20">
@@ -223,9 +225,12 @@ const Checkout = () => {
                   </div>
                   <button
                     onClick={displayRazorpay}
-                    className="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white"
+                    className={
+                      `text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white` 
+                    }
                     target="_blank"
                     rel="noopener noreferrer"
+                    disabled={amount*days>0?false:true}
                   >
                     Checkout
                   </button>

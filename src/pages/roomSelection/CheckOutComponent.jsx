@@ -1,13 +1,11 @@
 import { React, useContext, useState } from "react";
-import roomImg from "../assets/room1.jpg";
-import { CheckOutContext } from "../context/amountContext";
+import roomImg from "../../assets/room1.jpg";
+import { CheckOutContext } from "../../context/amountContext";
 
-const CheckOutComponent = ({ width = "w-1/4", roomType, capacity }) => {
+const CheckOutComponent = ({ width = "w-1/4", roomType, meal,rmImg }) => {
   const { setAmount, amount, roomState, dispatch } =
     useContext(CheckOutContext);
   const [roomCounts, setroomCounts] = useState(0);
-  const [adults, setAdults] = useState(0);
-  const [children, setChildren] = useState(0);
 
   const room = roomState.filter((ele) => {
     return ele["roomType"] === roomType ? ele["roomCost"] : null;
@@ -22,7 +20,6 @@ const CheckOutComponent = ({ width = "w-1/4", roomType, capacity }) => {
       room: {
         roomType: roomType,
         count: roomCounts,
-        
       },
     });
     setAmount(amount + roomCost);
@@ -42,14 +39,11 @@ const CheckOutComponent = ({ width = "w-1/4", roomType, capacity }) => {
     setAmount(amount - roomCost);
   };
 
- 
-
-  
   return (
     <div className="md:flex items-center mt-14 py-8 border-t border-gray-200 lg:space-x-5 space-y-5">
       <div>
         <img
-          src={roomImg}
+          src={rmImg}
           alt="..."
           className="w-full h-full rounded-sm shadow-2xl object-center object-cover"
         />
@@ -60,12 +54,12 @@ const CheckOutComponent = ({ width = "w-1/4", roomType, capacity }) => {
             {roomType}
           </p>
         </div>
-        <p className="text-xs leading-3 text-gray-600 pt-2">
-          Capacity:{capacity}
+        <p className="text-lg   pt-2">
+          Meal: {meal}
         </p>
-        <p className="text-xs leading-3 text-gray-600 py-4">Color: Black</p>
-        <p className="w-96 text-xs leading-3 text-gray-600">
-          Composition: 100% calf leather
+        <p className="text-lg  py-4">Complete One day hault</p>
+        <p className="w-96 text-xl leading-3 ">
+          Perhead cost 
         </p>
         <p className="text-3xl font-black leading-none text-gray-800 w-full">
           {roomCost}

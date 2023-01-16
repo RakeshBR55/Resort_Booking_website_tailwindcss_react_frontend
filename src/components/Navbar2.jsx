@@ -16,7 +16,7 @@ const Navbar2 = () => {
   };
   
   const {decodedToken} = useContext(authContext);
- 
+  
   return (
     <>
       <div className="bg-transparent h-full">
