@@ -5,6 +5,7 @@ import { AiOutlineLogin } from "react-icons/ai";
 import Content from "./Content/Content";
 import { authContext } from "../context/authContext";
 import logo from "../assets/logonav.png"
+import { decodeToken } from "react-jwt";
 
 const Navbar2 = () => {
   const [show, setShow] = useState(null);
@@ -15,7 +16,8 @@ const Navbar2 = () => {
     navigate('/')
   };
   
-  const {decodedToken} = useContext(authContext);
+  const token = localStorage.getItem("token")
+  const decodedToken = decodeToken(token);
   
   return (
     <>
